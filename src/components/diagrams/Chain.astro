@@ -1,0 +1,66 @@
+---
+import Node from './Node.astro';
+import { chainHorizontal, chainVertical, type NodeSpec } from './layout';
+
+interface Props {
+  id: string;
+  items: NodeSpec[];
+  ariaLabel: string;
+}
+
+const { id, items, ariaLabel } = Astro.props;
+const h = chainHorizontal(items);
+const v = chainVertical(items);
+const PAD = 24;
+---
+
+<figure class="diagram-frame" role="img" aria-label={ariaLabel}>
+  <div class="diagram diagram-h">
+    <svg viewBox={`0 0 ${h.width + PAD * 2} ${h.height + PAD * 2}`} aria-hidden="true">
+      <defs>
+        <marker id={`arrow-${id}-h`} markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="var(--graphite)" fill-opacity="0.5" />
+        </marker>
+      </defs>
+      <g transform={`translate(${PAD}, ${PAD})`}>
+        {h.connectors.map((c) => (
+          <line
+            class="connector"
+            x1={c.x1}
+            y1={c.y1}
+            x2={c.x2}
+            y2={c.y2}
+            marker-end={c.arrow ? `url(#arrow-${id}-h)` : undefined}
+          />
+        ))}
+        {h.nodes.map((n) => (
+          <Node x={n.x} y={n.y} width={n.width} height={n.height} label={n.label} owner={n.owner} />
+        ))}
+      </g>
+    </svg>
+  </div>
+  <div class="diagram diagram-v">
+    <svg viewBox={`0 0 ${v.width + PAD * 2} ${v.height + PAD * 2}`} aria-hidden="true">
+      <defs>
+        <marker id={`arrow-${id}-v`} markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto">
+          <path d="M0,0 L8,0 L4,8 Z" fill="var(--graphite)" fill-opacity="0.5" />
+        </marker>
+      </defs>
+      <g transform={`translate(${PAD}, ${PAD})`}>
+        {v.connectors.map((c) => (
+          <line
+            class="connector"
+            x1={c.x1}
+            y1={c.y1}
+            x2={c.x2}
+            y2={c.y2}
+            marker-end={c.arrow ? `url(#arrow-${id}-v)` : undefined}
+          />
+        ))}
+        {v.nodes.map((n) => (
+          <Node x={n.x} y={n.y} width={n.width} height={n.height} label={n.label} owner={n.owner} />
+        ))}
+      </g>
+    </svg>
+  </div>
+</figure>

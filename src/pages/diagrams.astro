@@ -1,0 +1,189 @@
+---
+// Internal review page for the diagram system — CLAUDE.md §5. Not a real
+// site page: excluded from the sitemap via astro.config.mjs. Ownership
+// colouring (brass vs ink) below is a first-pass reading of where the
+// ComTech technology layer sits in each chain — needs sign-off, not final.
+import '../styles/tokens.css';
+import '../styles/type.css';
+import '../styles/global.css';
+import '../components/diagrams/diagrams.css';
+
+import Chain from '../components/diagrams/Chain.astro';
+import Stack from '../components/diagrams/Stack.astro';
+import Hub from '../components/diagrams/Hub.astro';
+import Sequence from '../components/diagrams/Sequence.astro';
+import Progression from '../components/diagrams/Progression.astro';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="robots" content="noindex" />
+		<title>Diagram system review</title>
+	</head>
+	<body>
+		<main class="container">
+			<h1 class="type-display">Diagram system review</h1>
+			<p class="type-body">
+				All eight diagrams from CLAUDE.md §5, one component system. Resize the window across
+				1024px to see the horizontal/vertical swap.
+			</p>
+
+			<section>
+				<h2 class="type-h2">1 — Platform lifecycle <span class="type-small">(Chain)</span></h2>
+				<Chain
+					id="platform-lifecycle"
+					ariaLabel="Platform lifecycle: asset onboarding, then structuring, then token configuration, then smart contract deployment, then minting, then registry, then corporate actions, then reporting, then redemption or burning."
+					items={[
+						{ label: 'Asset onboarding', owner: 'third-party' },
+						{ label: 'Structuring', owner: 'third-party' },
+						{ label: 'Token configuration', owner: 'comtech' },
+						{ label: 'Smart contract deployment', owner: 'comtech' },
+						{ label: 'Minting', owner: 'comtech' },
+						{ label: 'Registry', owner: 'comtech' },
+						{ label: 'Corporate actions', owner: 'third-party' },
+						{ label: 'Reporting', owner: 'comtech' },
+						{ label: 'Redemption / Burning', owner: 'comtech' },
+					]}
+				/>
+			</section>
+
+			<section>
+				<h2 class="type-h2">2 — Metals chain <span class="type-small">(Chain, lower resolution)</span></h2>
+				<Chain
+					id="metals-chain"
+					ariaLabel="Metals chain: physical metal, then vault or custodian, then verification, then tokenisation, then digital token, then transfer, integration, or redemption."
+					items={[
+						{ label: 'Physical Metal', owner: 'third-party' },
+						{ label: 'Vault / Custodian', owner: 'third-party' },
+						{ label: 'Verification', owner: 'third-party' },
+						{ label: 'Tokenisation', owner: 'comtech' },
+						{ label: 'Digital Token', owner: 'comtech' },
+						{ label: 'Transfer / Integration / Redemption', owner: 'comtech' },
+					]}
+				/>
+			</section>
+
+			<section>
+				<h2 class="type-h2">3 — API stack <span class="type-small">(Stack)</span></h2>
+				<Stack
+					id="api-stack"
+					ariaLabel="API stack: client systems, above ComTech APIs, above the tokenisation engine, above smart contracts, above blockchain or DLT, above custodian, banking, registry and other partners."
+					layers={[
+						[{ label: 'Client Systems', owner: 'third-party' }],
+						[{ label: 'ComTech APIs', owner: 'comtech' }],
+						[{ label: 'Tokenisation Engine', owner: 'comtech' }],
+						[{ label: 'Smart Contracts', owner: 'comtech' }],
+						[{ label: 'Blockchain / DLT', owner: 'third-party' }],
+						[
+							{ label: 'Custodian', owner: 'third-party' },
+							{ label: 'Banking', owner: 'third-party' },
+							{ label: 'Registry', owner: 'third-party' },
+							{ label: 'Other Partners', owner: 'third-party' },
+						],
+					]}
+				/>
+			</section>
+
+			<section>
+				<h2 class="type-h2">4 — Engagement <span class="type-small">(Sequence)</span></h2>
+				<Sequence
+					id="engagement"
+					ariaLabel="Engagement sequence: 01 discover, 02 design, 03 build, 04 deploy, 05 manage."
+					items={[
+						{ label: 'Discover', owner: 'comtech' },
+						{ label: 'Design', owner: 'comtech' },
+						{ label: 'Build', owner: 'comtech' },
+						{ label: 'Deploy', owner: 'comtech' },
+						{ label: 'Manage', owner: 'comtech' },
+					]}
+				/>
+			</section>
+
+			<section>
+				<h2 class="type-h2">5 — Ecosystem <span class="type-small">(Hub)</span></h2>
+				<p class="type-small">
+					§5.2: eleven unnamed categories reads as dependence. Live pages should name partners or
+					reduce to four or five, presented as an interface list. Full set shown here for review.
+				</p>
+				<Hub
+					id="ecosystem"
+					ariaLabel="Ecosystem: ComTech at the centre, connected to issuers, banks, custodians, vaults, KYC and AML, legal, auditors, DLT networks, trading venues, payment providers, and asset managers."
+					center={{ label: 'ComTech', owner: 'comtech' }}
+					spokes={[
+						{ label: 'Issuers', owner: 'third-party' },
+						{ label: 'Banks', owner: 'third-party' },
+						{ label: 'Custodians', owner: 'third-party' },
+						{ label: 'Vaults', owner: 'third-party' },
+						{ label: 'KYC/AML', owner: 'third-party' },
+						{ label: 'Legal', owner: 'third-party' },
+						{ label: 'Auditors', owner: 'third-party' },
+						{ label: 'DLT Networks', owner: 'third-party' },
+						{ label: 'Trading Venues', owner: 'third-party' },
+						{ label: 'Payment Providers', owner: 'third-party' },
+						{ label: 'Asset Managers', owner: 'third-party' },
+					]}
+				/>
+			</section>
+
+			<section>
+				<h2 class="type-h2">6 — Pillar logic <span class="type-small">(Progression, stages)</span></h2>
+				<Progression
+					id="pillar-logic"
+					ariaLabel="Pillar logic: use our platform, then integrate our technology, then deploy specialised asset solutions."
+					stages={[
+						{ label: 'Use our platform', owner: 'comtech' },
+						{ label: 'Integrate our technology', owner: 'comtech' },
+						{ label: 'Deploy specialised asset solutions', owner: 'comtech' },
+					]}
+				/>
+			</section>
+
+			<section>
+				<h2 class="type-h2">7 — Perception shift <span class="type-small">(Progression, rows)</span></h2>
+				<Progression
+					id="perception-shift"
+					ariaLabel="Perception shift. Current: ComTech, then CGO, then Gold Token, then Crypto. Target: ComTech, then Swiss Technology Company, then Tokenisation Infrastructure, then Real-World Assets, then Institutional Digital Assets."
+					rows={[
+						{
+							label: 'Current',
+							items: [
+								{ label: 'ComTech', owner: 'comtech' },
+								{ label: 'CGO', owner: 'third-party' },
+								{ label: 'Gold Token', owner: 'third-party' },
+								{ label: 'Crypto', owner: 'third-party' },
+							],
+						},
+						{
+							label: 'Target',
+							items: [
+								{ label: 'ComTech', owner: 'comtech' },
+								{ label: 'Swiss Technology Company', owner: 'third-party' },
+								{ label: 'Tokenisation Infrastructure', owner: 'third-party' },
+								{ label: 'Real-World Assets', owner: 'third-party' },
+								{ label: 'Institutional Digital Assets', owner: 'emphasis' },
+							],
+						},
+					]}
+				/>
+			</section>
+
+			<section>
+				<h2 class="type-h2">8 — Brand architecture <span class="type-small">(Progression, tree)</span></h2>
+				<Progression
+					id="brand-architecture"
+					ariaLabel="Brand architecture: ComTech at the top, with three pillars beneath: Platform, Technology, and Precious Metals."
+					tree={{
+						root: { label: 'COMTECH', owner: 'comtech' },
+						children: [
+							{ label: 'PLATFORM', owner: 'third-party' },
+							{ label: 'TECHNOLOGY', owner: 'third-party' },
+							{ label: 'PRECIOUS METALS', owner: 'third-party' },
+						],
+					}}
+				/>
+			</section>
+		</main>
+	</body>
+</html>

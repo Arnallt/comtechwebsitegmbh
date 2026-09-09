@@ -1,0 +1,149 @@
+---
+// Progression covers three shapes from CLAUDE.md §5: a single arrowed
+// sequence (pillar logic), stacked labelled rows for a before/after
+// comparison (perception shift), or a parent with children (brand
+// architecture). Pass exactly one of `stages`, `rows`, `tree`.
+import Node from './Node.astro';
+import { chainHorizontal, chainVertical, tree as layoutTree, type NodeSpec } from './layout';
+
+interface Props {
+  id: string;
+  ariaLabel: string;
+  stages?: NodeSpec[];
+  rows?: { label: string; items: NodeSpec[] }[];
+  tree?: { root: NodeSpec; children: NodeSpec[] };
+}
+
+const { id, ariaLabel, stages, rows, tree } = Astro.props;
+const PAD = 24;
+const ROW_HEADING_GAP = 24;
+const ROW_GAP = 56;
+---
+
+<figure class="diagram-frame" role="img" aria-label={ariaLabel}>
+  {
+    stages && (() => {
+      const h = chainHorizontal(stages);
+      const v = chainVertical(stages);
+      return (
+        <>
+          <div class="diagram diagram-h">
+            <svg viewBox={`0 0 ${h.width + PAD * 2} ${h.height + PAD * 2}`} aria-hidden="true">
+              <defs>
+                <marker id={`arrow-${id}-h`} markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="var(--graphite)" fill-opacity="0.5" />
+                </marker>
+              </defs>
+              <g transform={`translate(${PAD}, ${PAD})`}>
+                {h.connectors.map((c) => (
+                  <line class="connector" x1={c.x1} y1={c.y1} x2={c.x2} y2={c.y2} marker-end={`url(#arrow-${id}-h)`} />
+                ))}
+                {h.nodes.map((n) => (
+                  <Node x={n.x} y={n.y} width={n.width} height={n.height} label={n.label} owner={n.owner} />
+                ))}
+              </g>
+            </svg>
+          </div>
+          <div class="diagram diagram-v">
+            <svg viewBox={`0 0 ${v.width + PAD * 2} ${v.height + PAD * 2}`} aria-hidden="true">
+              <defs>
+                <marker id={`arrow-${id}-v`} markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto">
+                  <path d="M0,0 L8,0 L4,8 Z" fill="var(--graphite)" fill-opacity="0.5" />
+                </marker>
+              </defs>
+              <g transform={`translate(${PAD}, ${PAD})`}>
+                {v.connectors.map((c) => (
+                  <line class="connector" x1={c.x1} y1={c.y1} x2={c.x2} y2={c.y2} marker-end={`url(#arrow-${id}-v)`} />
+                ))}
+                {v.nodes.map((n) => (
+                  <Node x={n.x} y={n.y} width={n.width} height={n.height} label={n.label} owner={n.owner} />
+                ))}
+              </g>
+            </svg>
+          </div>
+        </>
+      );
+    })()
+  }
+  {
+    rows && (() => {
+      const hLayouts = rows.map((row) => chainHorizontal(row.items));
+      const hWidth = Math.max(...hLayouts.map((l) => l.width));
+      const hHeight = hLayouts.reduce((sum, l) => sum + l.height + ROW_HEADING_GAP, 0) + ROW_GAP * (hLayouts.length - 1);
+
+      const vLayouts = rows.map((row) => chainVertical(row.items));
+      const vWidth = Math.max(...vLayouts.map((l) => l.width));
+      const vHeight = vLayouts.reduce((sum, l) => sum + l.height + ROW_HEADING_GAP, 0) + ROW_GAP * (vLayouts.length - 1);
+
+      return (
+        <>
+          <div class="diagram diagram-h">
+            <svg viewBox={`0 0 ${hWidth + PAD * 2} ${hHeight + PAD * 2}`} aria-hidden="true">
+              <defs>
+                <marker id={`arrow-${id}-h`} markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="var(--graphite)" fill-opacity="0.5" />
+                </marker>
+              </defs>
+              {hLayouts.map((layout, i) => {
+                const offsetY = PAD + i * (layout.height + ROW_HEADING_GAP + ROW_GAP) + ROW_HEADING_GAP;
+                return (
+                  <g transform={`translate(${PAD}, ${offsetY})`}>
+                    <text x={0} y={-ROW_HEADING_GAP / 2 - 6} class="row-label">{rows[i].label}</text>
+                    {layout.connectors.map((c) => (
+                      <line class="connector" x1={c.x1} y1={c.y1} x2={c.x2} y2={c.y2} marker-end={`url(#arrow-${id}-h)`} />
+                    ))}
+                    {layout.nodes.map((n) => (
+                      <Node x={n.x} y={n.y} width={n.width} height={n.height} label={n.label} owner={n.owner} />
+                    ))}
+                  </g>
+                );
+              })}
+            </svg>
+          </div>
+          <div class="diagram diagram-v">
+            <svg viewBox={`0 0 ${vWidth + PAD * 2} ${vHeight + PAD * 2}`} aria-hidden="true">
+              <defs>
+                <marker id={`arrow-${id}-v`} markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto">
+                  <path d="M0,0 L8,0 L4,8 Z" fill="var(--graphite)" fill-opacity="0.5" />
+                </marker>
+              </defs>
+              {vLayouts.map((layout, i) => {
+                const offsetY = PAD + i * (layout.height + ROW_HEADING_GAP + ROW_GAP) + ROW_HEADING_GAP;
+                return (
+                  <g transform={`translate(${PAD}, ${offsetY})`}>
+                    <text x={0} y={-ROW_HEADING_GAP / 2 - 6} class="row-label">{rows[i].label}</text>
+                    {layout.connectors.map((c) => (
+                      <line class="connector" x1={c.x1} y1={c.y1} x2={c.x2} y2={c.y2} marker-end={`url(#arrow-${id}-v)`} />
+                    ))}
+                    {layout.nodes.map((n) => (
+                      <Node x={n.x} y={n.y} width={n.width} height={n.height} label={n.label} owner={n.owner} />
+                    ))}
+                  </g>
+                );
+              })}
+            </svg>
+          </div>
+        </>
+      );
+    })()
+  }
+  {
+    tree && (() => {
+      const t = layoutTree(tree.root, tree.children);
+      return (
+        <div class="diagram diagram-single">
+          <svg viewBox={`0 0 ${t.width + PAD * 2} ${t.height + PAD * 2}`} aria-hidden="true">
+            <g transform={`translate(${PAD}, ${PAD})`}>
+              {t.connectors.map((c) => (
+                <line class="connector" x1={c.x1} y1={c.y1} x2={c.x2} y2={c.y2} />
+              ))}
+              {t.nodes.map((n) => (
+                <Node x={n.x} y={n.y} width={n.width} height={n.height} label={n.label} owner={n.owner} />
+              ))}
+            </g>
+          </svg>
+        </div>
+      );
+    })()
+  }
+</figure>

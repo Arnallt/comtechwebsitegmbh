@@ -1,0 +1,76 @@
+/* Diagram system — CLAUDE.md §5.1. Stroke and type only. No fills, no shadows. */
+
+.diagram-frame {
+  width: 100%;
+  margin: 0;
+}
+
+.diagram-frame svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.diagram-h {
+  display: none;
+}
+
+.diagram-v {
+  display: block;
+}
+
+.diagram-single {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .diagram-h {
+    display: block;
+  }
+  .diagram-v {
+    display: none;
+  }
+}
+
+.diagram .connector {
+  stroke: var(--graphite);
+  stroke-width: 1;
+  stroke-opacity: 0.5;
+  fill: none;
+}
+
+.diagram .node--third-party {
+  color: var(--ink);
+}
+
+.diagram .node--comtech {
+  color: var(--brass);
+}
+
+.diagram .node--emphasis {
+  color: var(--ink);
+}
+
+.diagram .node-label {
+  font-family: var(--font-structure);
+  font-weight: 600;
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+  fill: currentColor;
+}
+
+.diagram .row-label {
+  font-family: var(--font-structure);
+  font-weight: 600;
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  fill: var(--graphite);
+}
+
+.diagram .stage-number {
+  font-family: var(--font-structure);
+  font-weight: 600;
+  font-size: 12.5px;
+  fill: var(--graphite);
+  font-variant-numeric: tabular-nums;
+}

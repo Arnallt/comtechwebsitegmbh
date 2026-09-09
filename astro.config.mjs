@@ -11,5 +11,10 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://arnallt.github.io',
   base: '/comtechwebsitegmbh/',
-  integrations: [mdx(), sitemap()]
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => !page.includes('/diagrams'),
+    }),
+  ]
 });

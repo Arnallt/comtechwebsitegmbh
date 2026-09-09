@@ -1,0 +1,34 @@
+---
+import Node from './Node.astro';
+import { stack, type NodeSpec } from './layout';
+
+interface Props {
+  id: string;
+  layers: NodeSpec[][];
+  ariaLabel: string;
+}
+
+const { id, layers, ariaLabel } = Astro.props;
+const s = stack(layers);
+const PAD = 24;
+---
+
+<figure class="diagram-frame" role="img" aria-label={ariaLabel}>
+  <div class="diagram diagram-single">
+    <svg viewBox={`0 0 ${s.width + PAD * 2} ${s.height + PAD * 2}`} aria-hidden="true">
+      <defs>
+        <marker id={`arrow-${id}`} markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto">
+          <path d="M0,0 L8,0 L4,8 Z" fill="var(--graphite)" fill-opacity="0.5" />
+        </marker>
+      </defs>
+      <g transform={`translate(${PAD}, ${PAD})`}>
+        {s.connectors.map((c) => (
+          <line class="connector" x1={c.x1} y1={c.y1} x2={c.x2} y2={c.y2} marker-end={`url(#arrow-${id})`} />
+        ))}
+        {s.nodes.map((n) => (
+          <Node x={n.x} y={n.y} width={n.width} height={n.height} label={n.label} owner={n.owner} />
+        ))}
+      </g>
+    </svg>
+  </div>
+</figure>

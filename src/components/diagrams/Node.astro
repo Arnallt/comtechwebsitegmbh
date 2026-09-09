@@ -1,0 +1,22 @@
+---
+import type { Owner } from './layout';
+
+interface Props {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  label: string;
+  owner: Owner;
+}
+
+const { x, y, width, height, label, owner } = Astro.props;
+const strokeWidth = owner === 'comtech' ? 1.6 : owner === 'emphasis' ? 2.2 : 1;
+---
+
+<g class={`node node--${owner}`} transform={`translate(${x}, ${y})`}>
+  <rect width={width} height={height} fill="none" stroke="currentColor" stroke-width={strokeWidth} />
+  <text x={width / 2} y={height / 2} text-anchor="middle" dominant-baseline="middle" class="node-label"
+    >{label}</text
+  >
+</g>

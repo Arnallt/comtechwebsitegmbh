@@ -1,0 +1,46 @@
+---
+import Node from './Node.astro';
+import { hub, chainVertical, type NodeSpec } from './layout';
+
+interface Props {
+  id: string;
+  center: NodeSpec;
+  spokes: NodeSpec[];
+  ariaLabel: string;
+}
+
+const { id, center, spokes, ariaLabel } = Astro.props;
+const h = hub(center, spokes);
+// Below 1024px a radial layout shrinks past legibility — fall back to a
+// plain vertical list from the centre node, per CLAUDE.md §5.2's own
+// "interface list rather than constellation" guidance.
+const v = chainVertical([center, ...spokes]);
+const PAD = 24;
+---
+
+<figure class="diagram-frame" role="img" aria-label={ariaLabel}>
+  <div class="diagram diagram-h">
+    <svg viewBox={`0 0 ${h.width + PAD * 2} ${h.height + PAD * 2}`} aria-hidden="true">
+      <g transform={`translate(${PAD}, ${PAD})`}>
+        {h.connectors.map((c) => (
+          <line class="connector" x1={c.x1} y1={c.y1} x2={c.x2} y2={c.y2} />
+        ))}
+        {h.nodes.map((n) => (
+          <Node x={n.x} y={n.y} width={n.width} height={n.height} label={n.label} owner={n.owner} />
+        ))}
+      </g>
+    </svg>
+  </div>
+  <div class="diagram diagram-v">
+    <svg viewBox={`0 0 ${v.width + PAD * 2} ${v.height + PAD * 2}`} aria-hidden="true">
+      <g transform={`translate(${PAD}, ${PAD})`}>
+        {v.connectors.map((c) => (
+          <line class="connector" x1={c.x1} y1={c.y1} x2={c.x2} y2={c.y2} />
+        ))}
+        {v.nodes.map((n) => (
+          <Node x={n.x} y={n.y} width={n.width} height={n.height} label={n.label} owner={n.owner} />
+        ))}
+      </g>
+    </svg>
+  </div>
+</figure>
