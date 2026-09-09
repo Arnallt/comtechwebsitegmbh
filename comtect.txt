@@ -1,0 +1,190 @@
+
+Website design specification
+Company ComTech GmbH
+Source ComTech GmbH New Website Strategy, read verbatim. Every direction below is derived from it.
+Companion Website Brief v3 (positioning, architecture, page specs, copy rules)
+Covers Art direction, colour, type, grid, the diagram system, components, motion, build stack
+
+This document is set in the system it specifies. What you are reading is the direction, not a description of it.
+1What the source document decides for us
+
+Four instructions in the strategy settle most of the art direction before any taste is involved.
+The document says	Design consequence
+The site must not feel like a cryptocurrency website and should look much closer to an institutional financial infrastructure or enterprise technology company.	Rules out dark-and-metallic, glow, gradient mesh, shader effects, particle fields, node networks. This is the north star and it is the client's own words.
+One Infrastructure. Multiple Assets. Multiple Applications. Clients use only the modules they require.	Modularity is the visual concept. The site should look assembled from parts, with the parts visible.
+ComTech clearly identifiable as the technology infrastructure layer rather than automatically suggesting ComTech performs every financial-market function.	The single most important visual job. It needs a dedicated colour, used for nothing else.
+Eight separate diagram requests across the document: pillar progression, perception shift, nine-step platform chain, six-step metals chain, six-layer API stack, five-stage engagement, eleven-node ecosystem, and the 1.0/2.0/3.0 story.	This is a diagram-led site. Diagrams are the primary content type, not decoration around copy.
+
+Two things the source does not support
+
+It contains no claim that a physical redemption has been executed. Redemption appears only as a stage the technology supports. Nothing in the site may present redemption as a completed act unless that is separately established.
+
+It also describes no physical asset, vault or operation belonging to ComTech GmbH. There is nothing to photograph. Any direction depending on documentary photography of metal, vaults or fulfilment is unavailable, and any stock substitute would imply custody the company does not have. The site has no photography. That constraint drives §6.
+2Direction: the systems manual
+
+The site is built like technical documentation for a modular machine. Engineering line art for every diagram, set in the typography of a Swiss financial document. Nothing is rendered, shaded or simulated. Everything is stroke, type and rule.
+
+This is the direct visual translation of the three instructions above. It reads as enterprise infrastructure rather than crypto. It makes modularity literal, because a manual shows parts. And it gives the eight requested diagrams one coherent language instead of eight separate treatments.
+
+It is also the honest direction for a company at this stage. A site with no photography, no client logos and no glamour reads as restrained and technical, which is what a supplier of infrastructure should read as.
+
+Directions considered and set aside
+
+Instrument panel (dark, dense, live-state). Directly contradicts the source's instruction about not looking like a cryptocurrency site.
+Custody record (documentary photography). No subject exists to photograph. See §1.
+Ledger rail (single sticky journey). The source content is three parallel pillars plus a stack plus a hub, not one sequence. The rail is retained as a component on the pages where a sequence genuinely exists, and dropped elsewhere. See §7.2.
+3Colour
+
+Near-monochrome with one semantic accent. Six values, no more. Every colour has a job and nothing is decorative.
+Token	Light	Dark	Job
+--paper	#F7F7F5	#141517	Page ground. Neutral, not cream. Cream reads editorial and dates fast.
+--ink	#16181A	#E9E8E4	Body text, diagram strokes, headings. Never pure black.
+--graphite	#5A5F63	#9DA1A5	Captions, metadata, secondary diagram labels. Passes AA at 15px and above.
+--rule	#D9D8D2	#33363A	Borders, table heads, panel edges.
+--rule-soft	#E8E7E2	#26282B	Row separators, section divisions.
+--brass	#8A5E17	#C79A4A	The ComTech layer. See below.
+3.1The gold rule
+
+Gold ties the GmbH to the group wordmark, which is the reason to keep it. It stays because it earns a job, not because it is inherited.
+
+Brass marks the ComTech technology layer. Nothing else, anywhere, ever.
+
+In every diagram, brass identifies exactly which nodes ComTech supplies and which belong to issuers, custodians, banks or DLT networks. It appears in the eight system diagrams, in the scope-of-service block, and on the regulatory page. It does not appear in buttons, links, headings, icons, hover states, focus rings or backgrounds.
+
+Within about fifteen seconds a visitor learns what the colour means without being told, and the perimeter that §13 of the strategy is anxious about becomes something the eye reads rather than something the copy has to keep asserting.
+
+Treatment. Matte and flat. The colour of a stamp on a certificate, not the colour of a bar. No gradient, no bevel, no sheen, no metallic simulation, no shader. A rendered-gold treatment would pull the company back toward the gold-token perception the entire strategy exists to escape.
+
+Links and buttons take --ink with an underline offset. Focus rings take a 2px --ink outline with a 2px offset. Keeping interaction monochrome is what protects brass's meaning.
+4Typography
+
+Two families. A serif for reading, a grotesque for structure. The competitive set is uniformly on neutral grotesques, so a serif body is the cheapest differentiation available and it makes the Regulatory and Technology pages, which are genuinely long, readable.
+Role	Family	Use
+Reading	Spectral, 300 / 400 / 600 + italic	All body copy, standfirsts, panel text. Screen-first serif, holds up at small sizes.
+Structure	Archivo, 400 / 500 / 600	Headings, nav, labels, table heads, diagram labels, captions, buttons, numerals.
+
+Both are open-source and available via Fontsource. If a type budget exists, replace Archivo with a licensed grotesque. On a site with this little ornament the typeface carries most of the personality, and it is the highest-return spend available. Type budget: assumed none.
+4.1Scale
+Step	Size / line-height	Applied to
+display	clamp(30px, 5.2vw, 46px) / 1.08	Page H1. Archivo 600, tracking −0.02em.
+h2	24px / 1.2	Section heads. Archivo 600, tracking −0.01em.
+h3	16px / 1.3	Subsection heads. Archivo 600.
+lead	20px / 1.55	Standfirst, one per page maximum.
+body	17px / 1.66	Spectral 300. Measure capped at 68ch.
+small	15px / 1.5	Tables, captions, footnotes.
+label	12.5px / 1.4	Archivo 600, table heads and diagram keys. Never all-caps with wide tracking.
+
+Tabular figures everywhere numbers appear. font-variant-numeric: tabular-nums on tables, diagram labels and any figure. Non-negotiable for a company selling to finance.
+
+Section numerals hang in the left margin above 900px and collapse inline below it. Numbering is content-justified here: a specification gets cited in meetings by number.
+5Grid, spacing, breakpoints
+
+    Container 960px maximum. Measure 68 characters. Wider than that and long-form pages become unreadable.
+    Gutter 24px at all sizes. Margin rail 120px left above 900px, carrying section numerals and, on sequence pages, the stage rail.
+    Spacing scale 4 / 8 / 12 / 16 / 22 / 34 / 44 / 72. Nothing outside it.
+    Breakpoints 640 (single column, rail off), 900 (margin rail on), 1024 (diagrams go horizontal).
+    Density. Institutional readers prefer more information per screen than consumer audiences. No full-viewport sections, no 200px vertical padding between ideas. Tighter reads as more credible here.
+
+No cards. No drop shadows. No border radius above 1px. No elevation system. Hierarchy comes from rule weight, type size and whitespace, which is the whole point of the direction.
+6The diagram system
+
+The eight diagram requests in the strategy are the site's primary content. Built ad hoc they will drift within two quarters and cost more than the pages around them. Built as one system they become the strongest thing on the site.
+6.1One primitive, five arrangements
+
+Every diagram in the document is one of three shapes: a chain, a stack, or a hub. All of them are the same primitive, a labelled node with an ownership state, arranged differently.
+Arrangement	Serves	Notes
+Chain	Platform lifecycle (9 steps), metals chain (6 steps)	The metals chain is the platform chain at lower resolution. Same component, fewer nodes.
+Stack	API layer (6 layers)	Vertical. Brass band marks the ComTech layers, which is exactly what §5 of the strategy asks for.
+Hub	Partner ecosystem (11 nodes)	See the constraint below.
+Sequence	Five-stage engagement (01–05)	Numbered, because these are genuinely ordered stages.
+Progression	Pillar logic, perception shift, 1.0 / 2.0 / 3.0	Two-column before-and-after. Simplest arrangement.
+6.2Drawing rules
+
+    Inline SVG, hand-authored, using site CSS variables via currentColor. No image files, no icon fonts, no charting library.
+    Stroke weights: 1px third-party node, 1.6px ComTech node, 2.2px emphasis, 1px connectors at 50% opacity. Three weights total.
+    No fills. Line art only. Depth comes from stroke weight, never from tone or shadow.
+    Labels are real <text>, in Archivo, selectable and translatable. No text converted to paths.
+    Every diagram carries a role="img" and a full aria-label describing the sequence in prose.
+    Horizontal at 1024px and above; vertical stack below. A nine-node horizontal chain on a 390px viewport is either a sideways scroll or illegible type.
+
+Client systems ComTech APIs Tokenisation engine Smart contracts Blockchain / DLT Custodian · Banking · Registry · Partners ComTech technology layer
+The API stack from §5 of the strategy. Stroke weight distinguishes ComTech's layers from third-party layers; in the built version the bracket and the three heavier boxes are brass. This is the pattern every diagram follows.
+6.3The ecosystem hub, with a constraint
+
+A hub with eleven unnamed categories reads as dependence as readily as orchestration, and category nouns without names are read as an absence of names. Two acceptable versions: name real partners, or reduce to the four or five categories that genuinely sit adjacent to the technology layer and present them as an interface list rather than a constellation. Which partners may be named.
+7Components
+7.1Scope-of-service block
+
+The most important component on the site. The strategy proposes putting "minting and burning executed technologically pursuant to authorised issuer instructions" into body copy, where it is unreadable and where it lands exactly when a reader is trying to form a simple model of the company.
+
+It gets a dedicated block instead. Identical on every capability page, at the end of the capability section and before the call to action. Body width, 1px --rule border, 3px brass left edge, white panel, full-contrast text. Not grey, not small, not a footnote. Three short paragraphs at most: what ComTech performs, who instructs, what ComTech does not perform. Written by counsel, set by the designer, never buried.
+7.2Stage rail
+
+On the two pages with a genuine sequence, Platform and Precious Metals, a narrow rail sits in the left margin above 900px carrying the chain vertically. The reader's position advances as they scroll, and the brass segment grows across the nodes ComTech supplies. Off below 900px, off on every other page.
+
+Built with Scrollama, which uses IntersectionObserver and CSS position: sticky rather than scroll listeners. No scroll-jacking, no pinning, no hijacked wheel events. The page scrolls normally and the rail follows.
+7.3Pillar comparison
+
+One shared component carrying the Platform / Technology / Precious Metals distinction, rendered identically on Home, Platform and Technology. One source of truth prevents three separately written explanations drifting apart, which is the failure the strategy already half-admits to when it notes Pillar 2 needs differentiating from Pillar 1.
+7.4Production and roadmap headings
+
+Every capability page splits capabilities under two visible headings. The strategy runs them together, which is how a reader finishes a page unable to name one thing the company does today. Same type treatment, different heading, no visual softening of the roadmap side.
+8Motion
+
+Two moments. Nothing else animates.
+
+    Diagram draw. On first view only, connectors draw in sequence and the brass segment extends last. Under 600ms total, linear-out easing. GSAP DrawSVG is the tool, and GSAP became free for commercial use including previously paid plugins in April 2025.
+    Stage rail advance. The active node changes as the reader scrolls. State change, not a transition effect.
+
+No scroll-triggered fade-and-slide on section entry. No hover transforms. No parallax. No counters. Those are the generic default and they read as templated to exactly the audience that matters here.
+
+prefers-reduced-motion: reduce disables both, showing every diagram in its complete state. Treat native CSS scroll-driven animations as enhancement only: Firefox still does not ship animation-timeline, and its failure mode is that a browser drops the declaration but keeps the rest of the rule, so a scroll effect fires all at once on load. Guard behind @supports or use GSAP.
+9Imagery
+
+There is none. No photography, no stock, no illustration beyond the diagram system, no icon set, no client logo wall.
+
+This is a constraint turned into the direction. The company has no physical operation to photograph, and stock imagery of vaults, bullion or trading floors would imply custody and market functions the company does not perform, which is the specific risk §13 of the strategy is written to prevent. Photographs of people in offices say nothing. Logo walls require logos.
+
+The consequence is that the diagrams and the typography carry the entire visual load, which raises the quality bar on both considerably. Budget accordingly: the diagram system is the single largest design line item.
+
+The one exception worth planning for is the vendor pack and any published audit report, which should be presented as real downloadable documents with visible metadata rather than as icons. Vendor pack contents.
+10Accessibility and performance
+
+    WCAG 2.2 AA as a build requirement, not a review note. Institutional procurement asks about this.
+    All eight diagrams carry prose aria-label descriptions. Diagram meaning must survive with colour removed, which is why stroke weight and not brass alone distinguishes ComTech nodes.
+    Visible focus on every interactive element. 2px --ink outline, 2px offset.
+    Site renders and reads correctly with JavaScript disabled. The rail and the draw animation are enhancements.
+    Print stylesheet. Procurement circulates pages as PDFs; the site should print as a clean document with diagrams intact.
+    Self-hosted fonts via Fontsource. No Google Fonts CDN. Third-party font requests from a vendor site are a finding in a bank security review and complicate the CSP.
+    Self-hosted, privacy-first analytics. No third-party beacons.
+    Targets: LCP under 1.5s on 4G, zero layout shift, total JS under 40KB on pages without the rail.
+
+11Build
+Layer	Choice	Why
+Framework	Astro	Zero JS by default, static HTML output, content collections with schema validation. Right for a copy-heavy site whose wording will be rewritten repeatedly through legal review. Confirm the current major version at kickoff.
+Sequence	Scrollama 3.2.0	IntersectionObserver-based, sticky-graphic pattern, tiny, degrades to plain scrolling.
+Draw	GSAP 3.15 + DrawSVG	Free for commercial use since April 2025. Load only on pages with diagrams.
+Fonts	Fontsource	Self-hosted, subset, preloaded.
+Docs	Starlight	Astro-native, MIT, built-in Pagefind search. Same build system as the main site. Only if the developer surface is real. Confirm
+API reference	Scalar, or Stoplight Elements	Scalar for design control; Elements 9.0.19 for a script-tag drop-in with a working console and no build step.
+Editing	Keystatic	Someone in compliance will need to change regulatory-adjacent wording without a pull request.
+CI	Playwright + axe-core, Lighthouse CI, Vale	See below.
+11.1Copy rules as a build failure
+
+The strategy hedges nearly every capability sentence: could, potentially, where appropriate, where legally permissible, within the activities permitted to ComTech. Those hedges are why a reader finishes the document unable to name one thing the company does today. Copy rules written into a brief decay within two months of launch, especially when a nervous stakeholder is editing regulatory wording under time pressure.
+
+Encode them as a Vale style in CI. Banned hedges, the terminology lexicon, tokenisation spelling, and the §13 avoid-list all break the build the same way a type error does. For Claude Code specifically, a CLAUDE.md carrying the tokens in §3 to §5 plus these lint rules is the difference between it building this site and building a generic one.
+12Open questions
+
+Design decisions I have made on assumption. Each is reversible cheaply now and expensively later.
+
+    Wordmark. Whether the GmbH shares a wordmark with the group gold business, and whether it may be redrawn flat. Assumed shared hue, separate treatment.
+    Type budget. Assumed none, so both families are open-source. A licensed grotesque is the highest-return spend on this site.
+    Maintenance. Whether anyone in-house maintains the site after launch. Assumed no engineer, which is why Keystatic is in the stack. If genuinely nobody maintains it, a hosted builder becomes the honest recommendation over a custom Astro build.
+    Developer surface. Whether the docs subdomain is real or aspirational. Astro and Starlight earn their keep only if it is real. If it never gets built, the custom stack is over-engineered.
+    Partner naming. Which of the eleven ecosystem categories can be replaced with real names. Gates §6.3.
+    Vendor pack. What exists of SOC 2 or ISO 27001, penetration test cadence, DR and BCP documentation, escrow, and indemnity cover. Gates §9's one exception.
+    Chains and standards. Named networks and token standards, which turn the multi-chain claim from a category noun into a fact.
+    Perimeter text. The scope block copy, from counsel, mapped to the no-objection letter. Gates §7.1 and therefore the whole colour system's meaning.
+
+Three honest caveats. This direction has nowhere to hide: a near-monochrome site with no imagery and one semantic accent depends entirely on the diagrams being excellent and the copy being specific, and if the open questions above come back mostly empty then restraint stops reading as confidence and starts reading as an empty building. Second, I arrived at a serif-and-line-art direction three times across this project, which may be a genuine fit for Swiss institutional material or may be my own default, and it is worth putting a second direction in front of someone who has not read this thread. Third, everything here assumes the site is a credential shown to people who already know the company rather than a discovery surface competing for cold traffic; if inbound discovery matters, the whole argument for this level of restraint weakens.

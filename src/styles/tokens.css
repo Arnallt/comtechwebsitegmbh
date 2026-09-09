@@ -1,0 +1,45 @@
+/* Design tokens — CLAUDE.md §4. Never hardcode a colour or size outside this file. */
+
+:root {
+  --paper: #F7F7F5;
+  --ink: #16181A;
+  --graphite: #5A5F63;
+  --rule: #D9D8D2;
+  --rule-soft: #E8E7E2;
+  --panel: #FFFFFF;
+  --brass: #8A5E17;
+  --brass-tint: #F0E7D4;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 22px;
+  --space-6: 34px;
+  --space-7: 44px;
+  --space-8: 72px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #141517;
+    --ink: #E9E8E4;
+    --graphite: #9DA1A5;
+    --rule: #33363A;
+    --rule-soft: #26282B;
+    --panel: #1B1D1F;
+    --brass: #C79A4A;
+    --brass-tint: #2A2318;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #141517;
+  --ink: #E9E8E4;
+  --graphite: #9DA1A5;
+  --rule: #33363A;
+  --rule-soft: #26282B;
+  --panel: #1B1D1F;
+  --brass: #C79A4A;
+  --brass-tint: #2A2318;
+}

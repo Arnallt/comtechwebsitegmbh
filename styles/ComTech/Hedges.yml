@@ -1,0 +1,11 @@
+extends: existence
+message: "No hedges in capability copy (CLAUDE.md §9.1): '%s'. State the fact or delete the sentence."
+level: error
+ignorecase: true
+tokens:
+  - could
+  - potentially
+  - 'where appropriate'
+  - 'where legally permissible'
+  - 'subject to applicable requirements'
+  - 'within the activities permitted to'

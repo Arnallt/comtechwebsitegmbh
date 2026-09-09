@@ -1,0 +1,9 @@
+extends: substitution
+message: "Use '%s' instead of '%s' (CLAUDE.md §9.5 lexicon)."
+level: error
+ignorecase: true
+swap:
+  tokenization: tokenisation
+  customer: client
+  user: client
+  '(?:Gold (?:&|and) Precious Metals)': Precious Metals

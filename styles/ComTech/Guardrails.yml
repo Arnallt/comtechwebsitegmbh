@@ -1,0 +1,15 @@
+extends: existence
+message: "Never on the site (CLAUDE.md §2.2): '%s'."
+level: error
+ignorecase: true
+tokens:
+  - 'FINMA Licen[cs]ed'
+  - 'FINMA Approved'
+  - 'Buy tokeni[sz]ed securities through ComTech'
+  - 'Invest through ComTech'
+  - 'Trade tokeni[sz]ed assets'
+  - 'ComTech custody'
+  - 'ComTech investment platform'
+  - 'ComTech (?:tokeni[sz]es|holds|custod(?:ies|y)|redeems|issues|sells)'
+  - 'ComTech (?:1\.0|2\.0|3\.0)'
+  - 'institutional-grade'

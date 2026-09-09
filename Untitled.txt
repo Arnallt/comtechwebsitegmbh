@@ -1,0 +1,232 @@
+
+ComTech GmbH website brief
+Version 3  ·  supersedes v2, which misattributed the gold programme to the wrong entity
+Source ComTech GmbH New Website Strategy, three-pillar structure retained
+Scope The Swiss GmbH website only. Positioning, architecture, page specifications, copy rules.
+Out of scope Revenue and fee model (source §15), pricing, the ComTech Gold consumer site, regulatory mapping.
+
+ComTech GmbH does not issue tokens, hold assets or redeem them. That constraint is not a weakness to write around. It is the entire commercial proposition, and the site should lead with it.
+0Correction, and the position this brief assumes
+0.1What v2 got wrong
+
+The previous version treated ComTech GmbH as the company that took gold on-chain and redeemed it. It built the hero, the flagship page and the whole positioning on that claim. That was an entity error. A Swiss technology provider would have been advertising a Dubai issuer's operational achievement as its own, which is the precise conflation the source document's regulatory notes exist to prevent.
+0.2The structure this brief assumes
+Entity	What it is	Site
+ComTech Gold / ComTech FZCO	Dubai-based issuer of CGO, gold-backed, XDC network, metal held by a third-party vault operator, Shariah certified. Consumer and investor facing.	Existing gold site and wallet. Not this project.
+ComTech GmbH	Swiss technology company. Builds and operates tokenisation infrastructure for issuers, institutions and asset owners. Operates under a FINMA no-objection position, acting on authorised instruction.	This brief.
+
+Confirm before anything is written
+
+The legal relationship between the two entities is an inference, not a fact I hold. Parent, subsidiary, sister company under common ownership, or licensor and licensee are four materially different answers, and each one changes what the GmbH site may say about the gold programme, whether it may name CGO at all, and what disclosure the relationship requires. This is B1 in the register and it gates §1.4 entirely.
+0.3Retained from the source, against v2
+
+The three-pillar structure stays. v2 merged Platform and Technology into one product with two delivery modes, which solved a navigation problem by deleting a commercial decision. The pillars are separate propositions with separate buyers and separate contract shapes, and the source is right to keep them. What was genuinely broken is that a visitor cannot tell them apart, and that is fixed at the navigation and page level in §2 and §3, not by collapsing the business.
+0.4Blocking dependency
+
+Nothing below is final until every proposed service is mapped against the no-objection letter. Two related notes carried forward: the FINMA reference in the source carried a chatbot referrer parameter, suggesting the citation may not have been checked against the letter itself; and the source jumps from §6 to §9, so §7 and §8 are missing and someone should confirm nothing was lost.
+1Positioning
+1.1The constraint is the proposition
+
+The source treats the regulatory perimeter as something to phrase carefully around. It should be the opening statement. ComTech GmbH does not issue, does not custody, does not trade, does not hold client assets, and does not compete with its clients for their customers. For a bank evaluating a tokenisation vendor, every one of those is a reason to proceed rather than a caveat. The source already understood this commercially in Pillar 2 and then failed to carry it into the language.
+
+This also resolves the tension the source never resolved. The same sentence satisfies counsel and sells the product.
+1.2Why the source headline fails
+
+Substitute Taurus, Tokeny, Securitize, Sygnum or Fireblocks into "Infrastructure for the Tokenised Economy" and it stays true for all of them. It describes a category, and category lines only work once you hold share in the category.
+1.3Hero
+
+Primary headline: We don't issue tokens. We build the infrastructure that does.
+
+Subhead: ComTech GmbH provides Swiss-engineered tokenisation technology to issuers, banks and asset owners. Our infrastructure runs a live tokenised gold programme — naming subject to B1 end to end, from configuration through to redemption and burn.
+
+Conservative alternate: Swiss tokenisation infrastructure for institutions that issue their own assets.
+
+The primary is a negation, which is unusual and deliberate. It states the perimeter, differentiates against every competitor that also issues, and answers a bank's first unspoken question in eight words. If it is rejected internally, the replacement must still make clear above the fold that ComTech is a supplier to issuers rather than one of them.
+
+Two actions: Request access and Read the architecture brief, the second with no form gate. The source's "Explore Our Platform" promised a platform and delivered a page describing one, and "Talk to Our Tokenisation Team" is a high-commitment ask eleven seconds into a first visit.
+1.4How the gold programme may be used
+
+This is the site's only operating proof and it belongs to another entity. Handled precisely it is powerful, because it demonstrates the one thing almost no tokenisation vendor can demonstrate: infrastructure that has run the full lifecycle including redemption, against a physical asset, in production. Handled loosely it makes the GmbH look like a gold company, which is the exact repositioning the source is trying to escape.
+
+Rules
+
+    The GmbH claims the technology, never the asset. "Our infrastructure executes the mint and burn." Never "we tokenise gold", never "our gold", never "we redeem".
+    The issuer, the vault operator and the certifying body are named as separate parties, not as ComTech functions.
+    It is presented as a reference implementation, in a page section of that name. Not as a product line, not as the company's identity.
+    Whether CGO may be named, and what relationship disclosure is required, is B1.
+
+1.5Swiss
+
+The source uses "Swiss" as a credibility signal repeatedly and substantiates it nowhere. It appears on this site only where something concrete sits behind it: canton of incorporation, the DLT Act framework for register-based uncertificated securities, SRO or VQF membership, if any. The DLT Act is a real credential that implies no FINMA endorsement of ComTech, and the source omits it while devoting a full section to what cannot be claimed. For a Swiss entity selling to institutions, that is the wrong way round.
+2The three pillars, with the overlap fixed
+
+The source states that Pillar 2 "should be differentiated from the Platform business", which is an admission that it currently isn't. Both list smart contracts, minting and burning, and white-label delivery. The fix is a single distinguishing question, asked and answered identically everywhere it appears.
+
+The distinguishing question
+
+Who operates the infrastructure? If ComTech operates it, that is Platform. If you operate it inside your own environment, that is Technology. Precious Metals is neither. It is the asset class where both have already been proven.
+Pillar	Who operates it	Buyer	Contract shape
+Platform	ComTech	Asset owners, commodity businesses, real-estate groups, private credit. Organisations without an engineering function.	Implementation, then ongoing operation.
+Technology	The client	Banks, asset managers, FinTechs, market infrastructure. Organisations with engineering and a brand to protect.	Licence and integration.
+Precious Metals	Either	Anyone evaluating whether the technology works on a physical asset.	Evidence, not a separate line.
+
+A shared comparison component carries this table and appears on Home, Platform and Technology. One object, one source of truth, no drift between three separately written explanations.
+
+Flagged, not solved
+
+The source's five-stage engagement model (Discover, Design, Build, Deploy, Manage) is a bespoke consulting shape and cannot sit on the same page as a subscription claim without one of them being untrue. On the site, present stages one to four as Implementation and stage five as Operations, and say nothing about pricing. The commercial decision underneath is outside this brief.
+3Architecture and navigation
+
+The source proposes ten pages in §2 and an eight-item bar in §14, and the two do not match. It also places Precious Metals in the top bar and again under Solutions, creating two paths to one destination. Both resolved. The bar mixes no classification schemes: three pillars, one audience hub, one developer entry, one company section.
+Platform   Technology   Precious Metals   Solutions   Developers   Company    [ Request access ]
+/platform   /technology   /precious-metals   /solutions   /developers   /company
+Top level	Children	Note
+Platform	—	One page. Capabilities split under two visible headings: in production, and roadmap.
+Technology	/technology/apis
+/technology/smart-contracts
+/technology/white-label	The source's six sub-items are too many. Three, each substantial, each routing to Developers.
+Precious Metals	—	No children. Splitting the chain weakens the proof. Appears once in the site, not twice.
+Solutions	/solutions/banks
+/solutions/asset-managers
+/solutions/corporates
+/solutions/fintech	Audience pages only. No product content originates here.
+Developers	docs subdomain	Thin entry page, then hand off. See §4.5.
+Company	/company/about
+/company/regulatory-approach
+/company/contact	Regulatory moves out of the top bar. See §4.6.
+4Page specifications
+4.1Home
+
+The question it answers: what is this company, and has its technology actually run?
+
+    Hero per §1.3.
+    The three pillars, using the shared comparison component from §2.
+    The system diagram with the ownership boundary visible (§5.1). This is the fastest possible statement of where ComTech stops.
+    Reference implementation strip, per §1.4. Programme figures the GmbH is permitted to cite, with the issuer and vault operator named as separate parties.
+    Scope-of-service block (§5.2).
+
+4.2Platform
+
+The question it answers: what do I get if I have assets but no engineering team?
+
+Open with the distinguishing question from §2 before any capability list. Then capabilities under two headings, in production and roadmap, covering asset configuration, token creation, minting and burning, registry, lifecycle events, investor interface. Then Implementation and Operations. Then the scope block.
+
+Running production and roadmap together, as the source does, is how a reader finishes the page unable to name one thing ComTech does today.
+4.3Technology
+
+The question it answers: what do I get if I have engineers and a brand?
+
+This is the pillar the source calls the most scalable, and the buyer here is an engineer who will decide viability before any commercial conversation. The page is short and routes hard into Developers. Content: the distinguishing question, the three product areas, the integration architecture, and the vendor-risk material below.
+
+Vendor risk is the omission that will cost most. A bank's third-party process asks for financials, insurance, key-person cover, business continuity, source code escrow and penetration test cadence before anyone evaluates the product, and a GmbH selling white-label infrastructure to a regulated institution is assessed on those grounds first. Pre-empt the questionnaire with a downloadable pack: current status of SOC 2 or ISO 27001, pen test cadence, DR and BCP documentation, escrow arrangement, professional indemnity cover.
+4.4Precious Metals
+
+The question it answers: does this technology work on something physical, all the way through?
+
+The page walks the chain end to end with real detail at each node, and at every node it is explicit about which party performs the step. Vault operator, verification body, issuer, and ComTech. The redemption node is the one worth the most words, because most providers do not have it, and because it is where the boundary between technology and issuer is clearest.
+
+Scope constraint
+
+Gold has run. Silver, platinum and palladium have not. They carry different vaulting economics, different market standards and materially different VAT treatment in Switzerland, where investment gold is exempt and silver is not. Listing four metals when one has shipped is exactly the overclaim the source's own §13 warns against. State gold as proven and the rest as roadmap, or omit.
+4.5Developers
+
+The question it answers: can I integrate this without talking to anyone?
+
+The source calls Pillar 2 the most scalable business, puts "API-first" on the technology page, and never mentions a repository, a specification, documentation, a sandbox, a changelog, or the word developer. For an integration product the documentation is the product.
+
+Main site carries a thin entry page. Everything real lives on a docs subdomain with its own build: reference documentation with runnable examples, a public OpenAPI specification, a sandbox with test credentials and synthetic assets, versioned SDK repositories, a semantic-versioned changelog, and a status page with real uptime history.
+
+On open source, the line to hold: the tokenisation engine stays closed, the interface layer is published permissively. SDKs, OpenAPI specification, contract ABIs, two or three reference integrations that run. Separately, and regardless of licensing, deployed contracts should be verified on-chain with source published, because an unverified contract reads as a warning sign to every counterparty in this sector.
+
+This is a platform workstream needing its own scope and budget, not a page in a marketing build.
+4.6Company, and the regulatory page
+
+The source gives Regulatory one of eight top-level slots while its own §13 establishes there is almost nothing affirmative it may say. Top placement draws attention to the weakest page and invites the inference that a licence exists. It moves under Company.
+
+The page itself is worth writing well, and given §1.1 it is closer to a positioning page than a disclaimer. Title it Regulatory approach. Content: the perimeter ComTech operates within, what that means in practice for a client, the Swiss framework the work sits under, and what ComTech does not do. Confident declarative sentences. In a sector where nearly everyone overclaims, the company that states its perimeter unprompted reads as the serious one.
+5Two components, built once
+5.1The system diagram
+
+The source contains the same asset-to-token chain three times in near-identical form, plus an API stack chain and an eleven-spoke ecosystem hub. Five bespoke graphics, three of which are one graphic at different zoom levels. They will drift within two quarters.
+
+Build one component. The critical addition in this version is the ownership boundary, which does the positioning work of §1.1 visually and faster than any paragraph.
+Physical asset Custodyvault Verification Configuration Mint Registry Transfer Corporateactions Redemptionand burn Issuer, custodian, verification body ComTech GmbH technology, executed on authorised instruction
+Schematic only, to fix the node set and the boundary. The built component uses the site's own tokens and type scale.
+State	Used on	Behaviour
+Boundary	Home, Regulatory approach	As drawn. The single most important image on the site.
+Platform	Platform	ComTech-operated nodes solid, client-configured nodes outlined.
+Technology	Technology	Inverse. Client operates, ComTech supplies the components.
+Reference	Precious Metals	Node labels replaced with the real named parties at each step.
+
+Horizontal at 1024px and above, vertical stack below. A nine-node horizontal chain on a 390px viewport is either a sideways scroll or illegible type, and institutional buyers read on phones between meetings more than anyone admits.
+
+On the eleven-spoke ecosystem hub in source §12: cut it or name the partners. Eleven unnamed categories communicates dependence as readily as orchestration, and category nouns without names are read as an absence of names.
+5.2The scope-of-service block
+
+The source proposes putting this in body copy: "Minting and burning executed technologically pursuant to authorised issuer instructions." As body copy it is unreadable, and it spikes cognitive load exactly where a reader is building a simple model of the company. It is also, on the reading in §1.1, the most important sentence on the site.
+
+It gets its own component. Same treatment on every capability page, at the end of the capability section, before the call to action. Full contrast, bordered, body width. Not grey, not small, not a footnote. Three short paragraphs at most: what ComTech performs, who instructs, what ComTech does not perform. Written by counsel, set by the designer, never buried.
+6Copy rules
+
+    No hedges in capability sentences. "Could", "potentially", "where appropriate", "where legally permissible", "subject to applicable requirements" are banned from product copy. If a sentence needs one, state the fact or delete the sentence. The perimeter belongs in the scope block, stated once, confidently, not diffused across every paragraph. Hedged capability language does not read as caution; it reads as a company unsure of itself.
+    Present tense for production, explicit roadmap headings for everything else. No conditional or future tense in product copy.
+    The GmbH is always the subject of technology verbs and never of asset verbs. It configures, deploys, executes, records, integrates. It does not tokenise gold, hold, custody, redeem, issue or sell.
+    No category nouns where a name is possible. "Custodians" becomes the named custodian. "Appropriate DLT networks" becomes the named chains. "Institutional-grade security" becomes the named audit firm, report date and scope.
+    Name the token standards. An integrating engineer looks for ERC-3643, ERC-1400 or restricted-transfer ERC-20 to establish that permissioned transfer and forced transfer are solved. Forced transfer is a compliance requirement in most securities contexts, not a technical nicety.
+
+7Terminology
+Use	Never use	Note
+ComTech GmbH	ComTech, unqualified	Critical. Unqualified "ComTech" blurs into the Dubai gold business. Full entity name on first use on every page and in the footer.
+tokenisation	tokenization	British spelling throughout, including slugs and metadata.
+Platform / Technology	used interchangeably	Distinguished by who operates the infrastructure, every time.
+Precious Metals	Gold & Precious Metals	One name, one page, one nav entry.
+issuer	us, we, our token	The issuer is always a third party in ComTech GmbH copy.
+token	digital representation	Pick one. The source alternated. Confirm which term counsel requires.
+real-world asset	RWA on first use	Spell out, then abbreviate within the page.
+client	customer, user	Consistent across site, docs and sales material.
+institutional	Institutional as a nav label	Adjective only. The audience hub is Solutions.
+8What must not appear
+
+Source §13 carried forward and extended. The first group is the new one and matters most.
+
+    Anything implying ComTech GmbH issues, holds, custodies, trades or redeems assets, including in image captions, alt text, metadata and social cards.
+    Any visual or verbal treatment that makes the GmbH site read as a gold site. No bullion photography, no price tickers, no wallet imagery, no shared consumer branding with the gold product.
+    CGO named, until B1 is answered.
+    "FINMA licensed", "FINMA approved", or FINMA's name or mark in any credential position. A no-objection position on a defined business model is not approval of the company, its products, or activity outside that perimeter.
+    "Buy tokenised securities through ComTech", "invest through ComTech", "trade tokenised assets", "ComTech custody", "ComTech investment platform".
+    Silver, platinum or palladium as current capability.
+    Partner categories without named partners. "Multi-chain" without the chains listed. "Institutional-grade" without a named certification or audit.
+    Any fee, pricing or revenue-model content.
+    Version-numbered company narrative. ComTech 1.0 / 2.0 / 3.0 is cut: it publishes the roadmap as the identity, and the "x.0" convention is crypto-cycle coded, contradicting the source's own instruction that the site must not read as a cryptocurrency website.
+
+9Relationship to the ComTech Gold site
+
+Two sites, two audiences, two risk profiles. The gold site sells a product to investors. This one sells infrastructure to institutions, and its credibility depends on not being mistaken for the other.
+
+    Visual systems must not be shared. Different palette, different typography, different photographic direction. Any shared design language undoes §1.1 before a word is read.
+    Cross-linking is one-directional and contained. The GmbH site may reference the programme within the reference implementation section. It should not carry a persistent link to a consumer investment product.
+    Domain and naming. Decide the domain, and whether the wordmark differs between entities. Sharing a wordmark across an issuer and its technology supplier is the fastest way to lose the distinction the whole strategy depends on.
+    Search. The existing gold property will outrank a new site on every branded query for some time. That is an SEO and naming problem to solve at the start, not after launch.
+
+10Blanks register
+
+Facts only ComTech holds. Nothing on the relevant page can be written until each is answered, and the honest answer to several may be that the claim is cut. B1 gates the largest amount of content.
+
+    Entity relationship. The legal relationship between ComTech GmbH and the Dubai issuer. Whether CGO may be named on the GmbH site, what disclosure is required, and what the GmbH may claim about the programme.
+    What the GmbH actually built and operates in that programme, node by node against §5.1. Which nodes are its technology and which are not.
+    Programme figures the GmbH is permitted to cite, and as at what date.
+    In production since. The year the GmbH's infrastructure first ran in production, distinct from when the token launched.
+    Chains. Every network the GmbH's infrastructure currently deploys to, in production, by name.
+    Token standards actually implemented, per deployment.
+    Contract addresses, deployed and verified, or a date by which they will be.
+    Security audit. Firm, report date, scope, and whether the report may be linked publicly.
+    Third parties nameable on the site: vault operator, verification or assay body, certifying bodies, and permission from each.
+    Other clients. Anything beyond the gold programme in production, and whether nameable. If nothing, the site rests on one reference and should say so plainly rather than implying plurality.
+    Vendor-risk pack. SOC 2 or ISO 27001 status, penetration test cadence, DR and BCP documentation, source code escrow, professional indemnity cover.
+    Swiss credentials. Canton of incorporation, SRO or VQF membership if any, whether any part of the offering sits under the DLT Act register-based securities framework.
+    Perimeter statement. The text of the scope block, from counsel, reconciled to the no-objection letter.
+    Terminology. Whether counsel requires "digital representation" over "token", and where.
+    Domain and wordmark decision per §9.
+    Source document gap. Confirmation that §7 and §8 of the original strategy contained nothing needing carrying forward.
+
+Two caveats on this version. The entity structure in §0.2 is assembled from the source document plus prior work on the Dubai gold business; it is an inference and if it is wrong in its particulars then §1, §4.4, §8 and §9 all move. And the hero in §1.3 opens with a negation, which is a real risk: it is memorable and differentiating, and it also spends the first eight words of the site on what the company does not do. If B10 comes back showing more than one production client, a positive construction becomes available and is probably better.

@@ -1,0 +1,46 @@
+/* Base layout — CLAUDE.md §4.3. Container/measure/breakpoints, applied everywhere. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.container {
+  max-width: 960px;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+@media (min-width: 900px) {
+  .container {
+    padding-inline: var(--space-6) var(--space-4);
+    padding-left: calc(120px + var(--space-4));
+  }
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--ink);
+  text-underline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}

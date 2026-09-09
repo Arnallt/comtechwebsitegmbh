@@ -1,0 +1,34 @@
+{
+  "name": "comtech-gmbh-website",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && npm run check:tk",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check:tk": "node scripts/check-tk.mjs",
+    "lint:prose": "vale src/content",
+    "test:a11y": "npm run build && node scripts/run-a11y.mjs",
+    "lhci": "npm run build && lhci autorun"
+  },
+  "dependencies": {
+    "@astrojs/markdown-satteri": "^0.4.1",
+    "@astrojs/mdx": "^8.0.1",
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource/spectral": "^5.3.0",
+    "astro": "^7.3.2"
+  },
+  "allowScripts": {
+    "esbuild": true
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@lhci/cli": "^0.15.1",
+    "@playwright/test": "^1.63.0"
+  }
+}
