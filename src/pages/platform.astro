@@ -1,0 +1,9 @@
+---
+import { getEntry } from 'astro:content';
+import CapabilityPage from '../layouts/CapabilityPage.astro';
+
+const entry = await getEntry('capabilities', 'platform');
+if (!entry) throw new Error('Missing capabilities/platform.mdx');
+---
+
+<CapabilityPage entry={entry} />

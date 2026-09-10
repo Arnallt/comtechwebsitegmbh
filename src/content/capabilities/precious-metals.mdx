@@ -1,0 +1,42 @@
+---
+title: "Precious Metals — ComTech GmbH"
+description: "ComTech GmbH's precious metals vertical — tokenisation technology proven against a physical asset held and verified by third parties."
+h1: "Bringing Physical Value On-Chain"
+lead: "A specialised vertical that proves ComTech GmbH's tokenisation technology against a physical asset held outside the company."
+intro: "ComTech GmbH's experience in this vertical is with gold. The metal is vaulted and verified by third parties; the technology configures the token, records the holding and executes transfers on authorised instruction. {{TK: whether the precious metals vertical is a live deployment or a reference implementation}}"
+diagram:
+  ariaLabel: "Metals chain: physical metal, then vault or custodian, then verification, then tokenisation, then digital token, then transfer, integration or redemption."
+  nodes:
+    - { label: "Physical Metal", owner: third-party }
+    - { label: "Vault / Custodian", owner: third-party }
+    - { label: "Verification", owner: third-party }
+    - { label: "Tokenisation", owner: comtech }
+    - { label: "Digital Token", owner: comtech }
+    - { label: "Transfer / Integration / Redemption", owner: comtech }
+stages:
+  - heading: "Physical Metal"
+    body: "Gold held in a vault operated by a third party. ComTech GmbH never takes possession of metal. {{TK: named vault operator for the precious metals vertical}}"
+  - heading: "Vault / Custodian"
+    body: "Custody, insurance and bar-level records are the vault operator's responsibility. {{TK: named custodian and the jurisdiction the vault sits in}}"
+  - heading: "Verification"
+    body: "Holdings are verified by an independent audit before any token is issued against them. {{TK: name of the audit firm and the audit frequency}}"
+  - heading: "Tokenisation"
+    body: "The token is configured to represent a defined quantity of verified metal, with transfer rules set to match the instrument's restrictions."
+  - heading: "Digital Token"
+    body: "Each token corresponds to a recorded, verified holding, and supply is reconciled against the vault's records. {{TK: the token standard and DLT network used for the metals token}}"
+  - heading: "Transfer / Integration / Redemption"
+    body: "Tokens transfer between permitted holders and integrate with third-party systems on authorised instruction. Redemption for physical metal is a lifecycle stage the technology supports; it is performed by the issuer and the vault operator, not by ComTech GmbH."
+inProduction:
+  - "{{TK: what is in production in the precious metals vertical today}}"
+roadmap:
+  - "{{TK: precious metals roadmap items}}"
+scope:
+  performs: "ComTech GmbH provides the technology that configures the metal-backed token, records each holding against verified vault data, and executes transfer and redemption instructions."
+  instructs: "The issuer instructs. Verification is performed by an independent auditor; custody, insurance and vaulting are performed by the vault operator."
+  excludes: "ComTech GmbH does not vault, insure, assay, hold, trade or redeem metal, and does not issue the token. Its experience in this vertical is with gold only. {{TK: perimeter statement from counsel}}"
+cta:
+  label: Request access
+  href: /company/contact
+---
+
+The metals chain is the platform lifecycle applied to one physical asset. Each stage below is a step in that sequence.

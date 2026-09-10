@@ -1,0 +1,112 @@
+---
+// CLAUDE.md §6.3 — one source of truth for the Platform / Technology /
+// Precious Metals distinction. Used identically on Home, Platform and
+// Technology. The distinguishing question is always "who operates the
+// infrastructure". No card component (§4.3) — a document table.
+import { getCollection } from 'astro:content';
+
+const pillars = (await getCollection('pillars')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="pillars" aria-label="The three pillars">
+  <table class="pillars__table">
+    <thead>
+      <tr>
+        <th scope="col">Pillar</th>
+        <th scope="col">What it is</th>
+        <th scope="col">Who operates the infrastructure</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        pillars.map((p) => (
+          <tr>
+            <th scope="row">{p.data.name}</th>
+            <td>{p.data.summary}</td>
+            <td>{p.data.operator}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+  <p class="pillars__lockup type-label">One Infrastructure. Multiple Assets. Multiple Applications.</p>
+</section>
+
+<style>
+  .pillars {
+    margin-block: var(--space-7);
+  }
+
+  .pillars__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pillars__table th,
+  .pillars__table td {
+    text-align: left;
+    vertical-align: top;
+    padding: var(--space-3) var(--space-4) var(--space-3) 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .pillars__table thead th {
+    font-family: var(--font-structure);
+    font-weight: 600;
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: var(--graphite);
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .pillars__table tbody th {
+    font-family: var(--font-structure);
+    font-weight: 600;
+    font-size: 15px;
+    white-space: nowrap;
+    padding-right: var(--space-6);
+  }
+
+  .pillars__table tbody td {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .pillars__lockup {
+    margin-top: var(--space-4);
+    color: var(--graphite);
+  }
+
+  @media (max-width: 640px) {
+    .pillars__table,
+    .pillars__table thead,
+    .pillars__table tbody,
+    .pillars__table tr,
+    .pillars__table th,
+    .pillars__table td {
+      display: block;
+    }
+
+    .pillars__table thead {
+      display: none;
+    }
+
+    .pillars__table tr {
+      margin-bottom: var(--space-4);
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: var(--space-2);
+    }
+
+    .pillars__table tbody th {
+      white-space: normal;
+      padding: var(--space-2) 0 0;
+      border-bottom: 0;
+    }
+
+    .pillars__table tbody td {
+      padding: var(--space-1) 0;
+      border-bottom: 0;
+    }
+  }
+</style>

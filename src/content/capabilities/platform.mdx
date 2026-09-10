@@ -1,0 +1,52 @@
+---
+title: "Platform — ComTech GmbH"
+description: "ComTech GmbH's ready-to-use platform for bringing real-world assets on-chain. Issuers configure and instruct; the platform executes and records."
+h1: "Bring Your Assets On-Chain"
+lead: "We provide the technology and infrastructure that enable businesses, asset owners and financial institutions to transform real-world assets into programmable digital assets."
+intro: "ComTech GmbH supplies and operates the platform. Issuers and asset owners configure their tokens, authorise every instruction and keep their own investor relationships; the platform executes those instructions and records the result."
+diagram:
+  ariaLabel: "Platform lifecycle: asset onboarding, then structuring, then token configuration, then smart contract deployment, then minting, then registry, then corporate actions, then reporting, then redemption or burning."
+  nodes:
+    - { label: "Asset onboarding", owner: third-party }
+    - { label: "Structuring", owner: third-party }
+    - { label: "Token configuration", owner: comtech }
+    - { label: "Smart contract deployment", owner: comtech }
+    - { label: "Minting", owner: comtech }
+    - { label: "Registry", owner: comtech }
+    - { label: "Corporate actions", owner: third-party }
+    - { label: "Reporting", owner: comtech }
+    - { label: "Redemption / Burning", owner: comtech }
+stages:
+  - heading: "Asset onboarding"
+    body: "An issuer or asset owner brings an asset and its documentation to the platform. {{TK: onboarding steps and eligibility criteria for the platform}}"
+  - heading: "Structuring"
+    body: "The issuer and its advisers define the instrument — rights, restrictions, jurisdiction and investor eligibility. ComTech GmbH does not advise on structure."
+  - heading: "Token configuration"
+    body: "The token's transfer rules, supply controls and metadata are configured against the agreed structure before any contract is deployed. {{TK: which token standards the platform supports — ERC-3643, ERC-1400, restricted-transfer ERC-20}}"
+  - heading: "Smart contract deployment"
+    body: "The configured contracts are deployed to {{TK: the DLT network or networks the platform deploys to}}."
+  - heading: "Minting"
+    body: "Tokens are minted technologically pursuant to authorised issuer instructions."
+  - heading: "Registry"
+    body: "Every position and transfer is recorded in the on-chain registry and reconciled against the issuer's record of holders."
+  - heading: "Corporate actions"
+    body: "The issuer instructs corporate actions — distributions, splits, redemptions. The platform executes and records them. {{TK: which corporate action types are supported in production}}"
+  - heading: "Reporting"
+    body: "Holdings, transfers and corporate actions are available to the issuer as reporting data and exports. {{TK: reporting formats and delivery — API, file, dashboard}}"
+  - heading: "Redemption / Burning"
+    body: "On authorised instruction, tokens are burned and the position retired. Redemption of the underlying asset is performed by the issuer and its custodian, not by ComTech GmbH."
+pillars: true
+inProduction:
+  - "{{TK: which platform capabilities are in production today}}"
+roadmap:
+  - "{{TK: which platform capabilities are on the roadmap}}"
+scope:
+  performs: "ComTech GmbH provides and operates the platform. It configures tokens, deploys smart contracts, and executes minting and burning technologically pursuant to authorised issuer instructions. It records every position, transfer and corporate action."
+  instructs: "Issuers instruct. Every mint, transfer restriction, corporate action and redemption originates from an authorised instruction given by the issuer or its appointed agent."
+  excludes: "ComTech GmbH does not issue, hold, custody, trade or redeem any asset or token. It does not advise on structure and holds no relationship with the issuer's investors. {{TK: perimeter statement from counsel}}"
+cta:
+  label: Request access
+  href: /company/contact
+---
+
+The platform runs the full token lifecycle — from onboarding an asset to retiring the position — as one system. Each stage below is a step in that sequence.

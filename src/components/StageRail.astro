@@ -1,0 +1,140 @@
+---
+// CLAUDE.md §6.2 — left-margin progress rail for the two sequence pages.
+// A vertical spine of labelled nodes with an ownership state (border weight
+// 1 / 1.6 / 2.2, brass on ComTech nodes). position: sticky, active node
+// advances on scroll via scrollama. No scroll-jacking. Off below 900px.
+// Renders complete with no JS and under prefers-reduced-motion (§7, §12).
+import type { NodeSpec } from './diagrams/layout';
+
+interface Props {
+  nodes: NodeSpec[];
+  ariaLabel: string;
+}
+
+const { nodes, ariaLabel } = Astro.props;
+---
+
+<nav class="stage-rail" aria-label={ariaLabel}>
+  <ol class="stage-rail__list">
+    {
+      nodes.map((node, i) => (
+        <li class={`stage-rail__item node--${node.owner ?? 'third-party'}`} data-stage={i}>
+          <span class="stage-rail__glyph" aria-hidden="true" />
+          <span class="stage-rail__label">{node.label}</span>
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<script>
+  import scrollama from 'scrollama';
+
+  const rail = document.querySelector<HTMLElement>('.stage-rail');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (rail && !reduce) {
+    const items = [...rail.querySelectorAll<HTMLElement>('[data-stage]')];
+
+    const setActive = (active: number) => {
+      for (const item of items) {
+        const stage = Number(item.dataset.stage);
+        item.dataset.state = stage < active ? 'past' : stage === active ? 'current' : 'future';
+      }
+    };
+
+    const start = () => {
+      setActive(0);
+      const scroller = scrollama();
+      scroller
+        .setup({ step: 'main [data-stage]', offset: 0.2 })
+        .onStepEnter((response: { index: number }) => setActive(response.index));
+      window.addEventListener('resize', () => scroller.resize());
+    };
+
+    const wide = window.matchMedia('(min-width: 900px)');
+    if (wide.matches) start();
+    else wide.addEventListener('change', (e) => e.matches && start(), { once: true });
+  }
+</script>
+
+<style>
+  .stage-rail {
+    display: none;
+  }
+
+  @media (min-width: 900px) {
+    .stage-rail {
+      display: block;
+      position: sticky;
+      top: var(--space-8);
+      align-self: start;
+    }
+  }
+
+  .stage-rail__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-left: 1px solid var(--rule);
+  }
+
+  .stage-rail__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    column-gap: var(--space-2);
+    align-items: start;
+    padding: 0 0 var(--space-4) var(--space-3);
+    color: var(--ink);
+  }
+
+  .stage-rail__item:last-child {
+    padding-bottom: 0;
+  }
+
+  .stage-rail__item.node--comtech {
+    color: var(--brass);
+  }
+
+  .stage-rail__glyph {
+    width: 9px;
+    height: 9px;
+    margin-top: 3px;
+    margin-left: -18px;
+    background: var(--paper);
+    border: 1px solid currentColor;
+  }
+
+  .stage-rail__item.node--comtech .stage-rail__glyph {
+    border-width: 1.6px;
+  }
+
+  .stage-rail__item.node--emphasis .stage-rail__glyph {
+    border-width: 2.2px;
+  }
+
+  .stage-rail__label {
+    font-family: var(--font-structure);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  /* JS-driven reveal. Default (no JS / reduced motion) = complete.
+     Future stages are de-emphasised but stay AA-legible (§12): graphite
+     label, dimmed glyph only. */
+  .stage-rail__item[data-state='future'] .stage-rail__label {
+    color: var(--graphite);
+  }
+
+  .stage-rail__item[data-state='future'] .stage-rail__glyph {
+    opacity: 0.4;
+  }
+
+  .stage-rail__item[data-state='current'] .stage-rail__glyph {
+    border-width: 2.2px;
+    opacity: 1;
+  }
+</style>

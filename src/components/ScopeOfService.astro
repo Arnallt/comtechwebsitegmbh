@@ -1,0 +1,45 @@
+---
+// CLAUDE.md §6.1 — identical on every capability page, before the CTA.
+// Brass left edge is one of the three sanctioned uses of --brass (§4.1).
+// Full-contrast text, body width. Not grey, not small, not a footnote.
+interface Props {
+  performs: string;
+  instructs: string;
+  excludes: string;
+}
+
+const { performs, instructs, excludes } = Astro.props;
+---
+
+<aside class="scope" aria-label="Scope of service">
+  <h2 class="type-h3 scope__heading">Scope of service</h2>
+  <p class="scope__para">{performs}</p>
+  <p class="scope__para">{instructs}</p>
+  <p class="scope__para">{excludes}</p>
+</aside>
+
+<style>
+  .scope {
+    max-width: 68ch;
+    margin-block: var(--space-7);
+    padding: var(--space-5) var(--space-5) var(--space-5) var(--space-6);
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--brass);
+  }
+
+  .scope__heading {
+    margin: 0 0 var(--space-3);
+  }
+
+  .scope__para {
+    margin: 0 0 var(--space-3);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .scope__para:last-child {
+    margin-bottom: 0;
+  }
+</style>

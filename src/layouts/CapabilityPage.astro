@@ -1,0 +1,151 @@
+---
+// Shared shell for /platform, /precious-metals and (Phase 4) /technology/*.
+// CLAUDE.md §6.1 ScopeOfService, §6.2 StageRail, §6.4 production/roadmap split.
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import Chain from '../components/diagrams/Chain.astro';
+import StageRail from '../components/StageRail.astro';
+import ScopeOfService from '../components/ScopeOfService.astro';
+import PillarComparison from '../components/PillarComparison.astro';
+
+interface Props {
+  entry: CollectionEntry<'capabilities'>;
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+const base = import.meta.env.BASE_URL;
+const ctaHref = base.replace(/\/$/, '') + data.cta.href;
+---
+
+<BaseLayout title={data.title} description={data.description}>
+  <div class="capability">
+    <StageRail nodes={data.diagram.nodes} ariaLabel={data.diagram.ariaLabel} />
+
+    <main class="capability__body">
+      <h1 class="type-display">{data.h1}</h1>
+      <p class="type-lead">{data.lead}</p>
+      <p class="type-body">{data.intro}</p>
+
+      <div class="capability__diagram">
+        <Chain id={entry.id} items={data.diagram.nodes} ariaLabel={data.diagram.ariaLabel} />
+      </div>
+
+      <div class="type-body capability__prose">
+        <Content />
+      </div>
+
+      {data.pillars && <PillarComparison />}
+
+      {
+        data.stages.map((stage, i) => (
+          <section class="stage" data-stage={i}>
+            <h2 class="type-h2">{stage.heading}</h2>
+            <p class="type-body">{stage.body}</p>
+          </section>
+        ))
+      }
+
+      <section class="capability__split">
+        <h2 class="type-h2">In production</h2>
+        <ul class="capability__list">
+          {data.inProduction.map((item) => <li class="type-body">{item}</li>)}
+        </ul>
+      </section>
+
+      <section class="capability__split">
+        <h2 class="type-h2">Roadmap</h2>
+        <ul class="capability__list">
+          {data.roadmap.map((item) => <li class="type-body">{item}</li>)}
+        </ul>
+      </section>
+
+      <ScopeOfService
+        performs={data.scope.performs}
+        instructs={data.scope.instructs}
+        excludes={data.scope.excludes}
+      />
+
+      <p class="capability__cta">
+        <a href={ctaHref}>{data.cta.label}</a>
+      </p>
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .capability {
+    max-width: 960px;
+    margin-inline: auto;
+    padding-inline: var(--space-4);
+  }
+
+  /* Prose holds the 68ch measure; the overview diagram spans the column. */
+  .capability__body > * {
+    max-width: 68ch;
+  }
+
+  .capability__body > .capability__diagram {
+    max-width: none;
+    margin-block: var(--space-6);
+  }
+
+  .capability__prose {
+    margin-block: var(--space-6);
+  }
+
+  .stage {
+    margin-block: var(--space-6);
+    scroll-margin-top: var(--space-6);
+  }
+
+  .stage h2 {
+    margin-bottom: var(--space-2);
+  }
+
+  .capability__split {
+    margin-block: var(--space-6);
+  }
+
+  .capability__list {
+    margin: 0;
+    padding-left: var(--space-4);
+  }
+
+  .capability__list li {
+    margin-block: var(--space-2);
+  }
+
+  .capability__cta {
+    margin-top: var(--space-7);
+  }
+
+  .capability__cta a {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--ink);
+    text-decoration: none;
+    font-family: var(--font-structure);
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .capability__cta a:hover {
+    background: var(--rule-soft);
+  }
+
+  @media (min-width: 900px) {
+    .capability {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      column-gap: var(--space-6);
+      max-width: calc(960px + 120px + var(--space-6));
+    }
+
+    .capability__diagram {
+      max-width: none;
+    }
+  }
+</style>

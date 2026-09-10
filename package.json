@@ -8,12 +8,13 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build && npm run check:tk",
+    "build:preview": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "check:tk": "node scripts/check-tk.mjs",
-    "lint:prose": "vale src/content",
-    "test:a11y": "npm run build && node scripts/run-a11y.mjs",
-    "lhci": "npm run build && lhci autorun"
+    "lint:prose": "vale src/content && node scripts/check-prose.mjs",
+    "test:a11y": "npm run build:preview && node scripts/run-a11y.mjs",
+    "lhci": "npm run build:preview && lhci autorun"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.1",
@@ -21,7 +22,8 @@
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/archivo": "^5.3.0",
     "@fontsource/spectral": "^5.3.0",
-    "astro": "^7.3.2"
+    "astro": "^7.3.2",
+    "scrollama": "^3.2.0"
   },
   "allowScripts": {
     "esbuild": true
