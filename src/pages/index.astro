@@ -1,27 +1,9 @@
 ---
-import '../styles/tokens.css';
-import '../styles/type.css';
-import '../styles/global.css';
+import { getEntry } from 'astro:content';
+import StandardPage from '../layouts/StandardPage.astro';
 
-const base = import.meta.env.BASE_URL;
+const entry = await getEntry('pages', 'home');
+if (!entry) throw new Error('Missing pages/home.mdx');
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
-		<link rel="icon" href={`${base}favicon.ico`} />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
-		<title>ComTech GmbH — Infrastructure for the Tokenised Economy</title>
-	</head>
-	<body>
-		<main class="container">
-			<h1 class="type-display">Infrastructure for the Tokenised Economy</h1>
-			<p class="type-lead">
-				We provide the technology and infrastructure that enable businesses, asset owners and
-				financial institutions to transform real-world assets into programmable digital assets.
-			</p>
-		</main>
-	</body>
-</html>
+<StandardPage entry={entry} />

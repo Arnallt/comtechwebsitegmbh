@@ -1,0 +1,107 @@
+---
+// Footer — CLAUDE.md §2.1 requires the full "ComTech GmbH" name and makes
+// the entity separation explicit.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const year = new Date().getFullYear();
+
+const columns = [
+  {
+    heading: 'Product',
+    links: [
+      { label: 'Platform', href: '/platform' },
+      { label: 'Technology', href: '/technology' },
+      { label: 'Precious Metals', href: '/precious-metals' },
+      { label: 'Solutions', href: '/solutions' },
+      { label: 'Developers', href: '/developers' },
+    ],
+  },
+  {
+    heading: 'Company',
+    links: [
+      { label: 'About', href: '/company/about' },
+      { label: 'Regulatory approach', href: '/company/regulatory-approach' },
+      { label: 'Contact', href: '/company/contact' },
+    ],
+  },
+];
+---
+
+<footer class="footer">
+  <div class="footer__grid">
+    {
+      columns.map((col) => (
+        <nav class="footer__col" aria-label={col.heading}>
+          <h2 class="footer__heading">{col.heading}</h2>
+          <ul>
+            {col.links.map((l) => (
+              <li>
+                <a href={base + l.href}>{l.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))
+    }
+  </div>
+
+  <p class="footer__entity">
+    ComTech GmbH is a Swiss technology company. It supplies tokenisation
+    infrastructure and does not issue, hold, custody, trade or redeem any asset
+    or token. Registered office: {'{{TK: registered office address of ComTech GmbH}}'}.
+  </p>
+  <p class="footer__legal">© {year} ComTech GmbH</p>
+</footer>
+
+<style>
+  .footer {
+    max-width: 960px;
+    margin: var(--space-8) auto 0;
+    padding: var(--space-6) var(--space-4) var(--space-7);
+    border-top: 1px solid var(--rule);
+  }
+
+  .footer__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-7);
+    margin-bottom: var(--space-6);
+  }
+
+  .footer__heading {
+    font-family: var(--font-structure);
+    font-weight: 600;
+    font-size: 12.5px;
+    color: var(--graphite);
+    margin: 0 0 var(--space-3);
+  }
+
+  .footer__col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer__col li {
+    margin-bottom: var(--space-2);
+  }
+
+  .footer__col a {
+    font-size: 15px;
+    color: var(--ink);
+    text-underline-offset: 3px;
+  }
+
+  .footer__entity {
+    max-width: 68ch;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--graphite);
+    margin: 0 0 var(--space-3);
+  }
+
+  .footer__legal {
+    font-size: 15px;
+    color: var(--graphite);
+    margin: 0;
+  }
+</style>

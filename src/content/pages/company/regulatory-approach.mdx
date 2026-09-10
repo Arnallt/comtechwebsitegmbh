@@ -1,0 +1,38 @@
+---
+title: "Regulatory approach — ComTech GmbH"
+description: "ComTech GmbH is a technology supplier. It holds no financial-services licence and performs no regulated activity; its clients are the regulated parties."
+h1: "Regulatory approach"
+lead: "ComTech GmbH is a technology supplier. The regulated parties are its clients."
+intro: "ComTech GmbH does not issue, hold, custody, trade or redeem, and it holds no financial-services licence. Its clients — issuers, banks, custodians and their advisers — carry the regulatory obligations for the instruments they bring on-chain. The technology is built so those parties can meet their obligations."
+scope:
+  performs: "ComTech GmbH supplies tokenisation technology: it configures tokens, deploys and maintains smart contracts, executes authorised instructions and records the registry. Minting and burning are executed technologically pursuant to authorised issuer instructions."
+  instructs: "The issuer, and the regulated institutions it appoints, give every asset-level instruction and hold the corresponding licences and permissions."
+  excludes: "ComTech GmbH holds no financial-services licence, performs no regulated activity, and gives no legal, regulatory or investment advice. It makes no representation about the regulatory status of any instrument built on its technology. {{TK: perimeter and regulatory-status statement from counsel}}"
+---
+
+import Hub from '../../../components/diagrams/Hub.astro';
+
+## Where ComTech GmbH sits
+
+<Hub
+  id="regulatory-hub"
+  ariaLabel="ComTech GmbH at the centre as the technology layer, connected to the regulated parties around it: issuers, banks, custodians and auditors."
+  center={{ label: 'ComTech GmbH', owner: 'comtech' }}
+  spokes={[
+    { label: 'Issuers', owner: 'third-party' },
+    { label: 'Banks', owner: 'third-party' },
+    { label: 'Custodians', owner: 'third-party' },
+    { label: 'Auditors', owner: 'third-party' },
+  ]}
+/>
+
+Every party around the centre carries a regulatory role. The centre supplies
+technology and carries none.
+
+## Entity separation
+
+ComTech GmbH is a Swiss technology company. It shares ownership with a separate
+Dubai-based gold-token issuer, which is a distinct legal entity. ComTech GmbH
+performs no issuance, custody, trading or redemption for that entity or any
+other. The exact wording of this separation is with counsel — see the scope
+statement above.

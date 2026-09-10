@@ -1,0 +1,30 @@
+---
+title: "APIs — Technology — ComTech GmbH"
+description: "REST and webhook APIs for configuring tokens, submitting authorised instructions, moving positions and pulling reporting data."
+h1: "APIs"
+lead: "One interface for configuration, issuance instructions, transfers and reporting."
+intro: "The APIs are how an integrating institution drives ComTech GmbH's tokenisation engine from its own systems. Every asset-level call carries an authorised instruction from the institution; the API executes and records it."
+inProduction:
+  - "{{TK: which API surfaces are generally available — configuration, instructions, transfers, reporting, webhooks}}"
+roadmap:
+  - "{{TK: API surfaces on the roadmap}}"
+references:
+  - term: "Authentication"
+    detail: "{{TK: auth model — API keys, OAuth client credentials, or mTLS}}"
+  - term: "Token standards"
+    detail: "The APIs configure permissioned and restricted-transfer tokens. {{TK: confirm supported standards — ERC-3643, ERC-1400, restricted-transfer ERC-20}}"
+  - term: "Environments"
+    detail: "{{TK: sandbox and production environment details}}"
+  - term: "Rate limits and availability"
+    detail: "{{TK: published rate limits and availability commitments}}"
+scope:
+  performs: "The APIs configure tokens, execute authorised issuance and transfer instructions, and return registry and reporting data."
+  instructs: "The integrating institution authenticates, authorises and submits every instruction. ComTech GmbH originates none."
+  excludes: "The APIs do not custody keys or assets, move value outside an authorised instruction, or make issuance decisions. {{TK: perimeter statement from counsel}}"
+cta:
+  label: "Developer documentation"
+  href: "/developers"
+---
+
+Full endpoint reference, authentication detail, error semantics and webhook
+payloads live in the developer documentation.

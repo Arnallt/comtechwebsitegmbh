@@ -1,0 +1,55 @@
+---
+title: "ComTech GmbH — Infrastructure for the Tokenised Economy"
+description: "ComTech GmbH supplies tokenisation infrastructure to issuers, banks, asset managers and asset owners. It builds the technology; it does not issue, hold or trade."
+h1: "Infrastructure for the Tokenised Economy"
+lead: "We provide the technology and infrastructure that enable businesses, asset owners and financial institutions to transform real-world assets into programmable digital assets."
+intro: "ComTech GmbH is a Swiss technology company. One infrastructure runs underneath three pillars — a ready-to-use platform, enterprise components to integrate, and a precious metals vertical — and the company configures, deploys and records. It does not issue, hold, custody, trade or redeem."
+pillars: true
+cta:
+  label: "Request access"
+  href: "/company/contact"
+---
+
+import Progression from '../../components/diagrams/Progression.astro';
+
+{/*
+  §9 open decision — hero line, for the client to choose:
+  A) source line, in use: "Infrastructure for the Tokenised Economy"
+  B) differentiator that states the perimeter in one line:
+     "We don't issue tokens. We build the infrastructure that does."
+  To switch, change `h1` in the frontmatter above.
+*/}
+
+## One infrastructure, three pillars
+
+<Progression
+  id="home-brand-architecture"
+  ariaLabel="Brand architecture: ComTech at the top, with three pillars beneath — Platform, Technology and Precious Metals."
+  tree={{
+    root: { label: 'COMTECH GMBH', owner: 'comtech' },
+    children: [
+      { label: 'PLATFORM', owner: 'third-party' },
+      { label: 'TECHNOLOGY', owner: 'third-party' },
+      { label: 'PRECIOUS METALS', owner: 'third-party' },
+    ],
+  }}
+/>
+
+The three pillars differ by one question: who operates the infrastructure. On the
+platform, ComTech GmbH does. With the technology components, the client does. In
+the precious metals vertical, either can.
+
+## Where ComTech GmbH sits
+
+<Progression
+  id="home-perception"
+  ariaLabel="ComTech GmbH belongs with Swiss technology companies building tokenisation infrastructure for real-world assets, not with token issuers."
+  stages={[
+    { label: 'Swiss technology company', owner: 'comtech' },
+    { label: 'Tokenisation infrastructure', owner: 'comtech' },
+    { label: 'Real-world assets', owner: 'third-party' },
+  ]}
+/>
+
+The company builds infrastructure that financial institutions and enterprises use
+to bring their own assets on-chain. The issuer is always a third party.

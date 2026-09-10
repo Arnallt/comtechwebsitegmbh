@@ -8,7 +8,19 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    h1: z.string(),
     lead: z.string().optional(),
+    intro: z.string().optional(),
+    pillars: z.boolean().default(false),
+    inProduction: z.array(z.string()).optional(),
+    roadmap: z.array(z.string()).optional(),
+    references: z
+      .array(z.object({ term: z.string(), detail: z.string() }))
+      .optional(),
+    scope: z
+      .object({ performs: z.string(), instructs: z.string(), excludes: z.string() })
+      .optional(),
+    cta: z.object({ label: z.string(), href: z.string() }).optional(),
   }),
 });
 

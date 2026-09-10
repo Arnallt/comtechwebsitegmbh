@@ -3,7 +3,7 @@
 // CLAUDE.md §6.1 ScopeOfService, §6.2 StageRail, §6.4 production/roadmap split.
 import type { CollectionEntry } from 'astro:content';
 import { render } from 'astro:content';
-import BaseLayout from './BaseLayout.astro';
+import PageLayout from './PageLayout.astro';
 import Chain from '../components/diagrams/Chain.astro';
 import StageRail from '../components/StageRail.astro';
 import ScopeOfService from '../components/ScopeOfService.astro';
@@ -20,7 +20,7 @@ const base = import.meta.env.BASE_URL;
 const ctaHref = base.replace(/\/$/, '') + data.cta.href;
 ---
 
-<BaseLayout title={data.title} description={data.description}>
+<PageLayout title={data.title} description={data.description}>
   <div class="capability">
     <StageRail nodes={data.diagram.nodes} ariaLabel={data.diagram.ariaLabel} />
 
@@ -73,7 +73,7 @@ const ctaHref = base.replace(/\/$/, '') + data.cta.href;
       </p>
     </main>
   </div>
-</BaseLayout>
+</PageLayout>
 
 <style>
   .capability {

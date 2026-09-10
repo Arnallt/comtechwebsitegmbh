@@ -11,6 +11,27 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://arnallt.github.io',
   base: '/comtechwebsitegmbh/',
+  // Strict CSP (§12). Astro adds script-src/style-src with per-build hashes;
+  // no inline script is unhashed. Delivered as a <meta http-equiv> since
+  // GitHub Pages can't set headers.
+  security: {
+    csp: {
+      directives: [
+        "default-src 'self'",
+        "img-src 'self' data:",
+        "font-src 'self'",
+        "base-uri 'self'",
+        "form-action 'self'",
+        "frame-ancestors 'none'",
+        "object-src 'none'",
+      ],
+    },
+  },
+  // No code blocks in content; disabling Shiki removes its CSP-incompatible
+  // inline styles.
+  markdown: {
+    syntaxHighlight: false,
+  },
   integrations: [
     mdx(),
     sitemap({

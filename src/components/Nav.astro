@@ -1,0 +1,107 @@
+---
+// Top nav — CLAUDE.md §10. Six items plus one action. Links are --ink with
+// an underline offset, never brass (§4.1). No JS, no disclosure widget: the
+// list wraps to a few rows on narrow screens.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const here = Astro.url.pathname.replace(/\/$/, '');
+
+const items = [
+  { label: 'Platform', href: '/platform' },
+  { label: 'Technology', href: '/technology' },
+  { label: 'Precious Metals', href: '/precious-metals' },
+  { label: 'Solutions', href: '/solutions' },
+  { label: 'Developers', href: '/developers' },
+  { label: 'Company', href: '/company/about' },
+];
+
+const isCurrent = (href: string) => here === base + href || here.startsWith(base + href + '/');
+---
+
+<header class="nav">
+  <a class="nav__wordmark" href={base + '/'}>ComTech GmbH</a>
+  <nav aria-label="Primary">
+    <ul class="nav__list">
+      {
+        items.map((item) => (
+          <li>
+            <a href={base + item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+      <li class="nav__action">
+        <a href={base + '/company/contact'}>Request access</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-3) var(--space-5);
+    max-width: 960px;
+    margin-inline: auto;
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .nav__wordmark {
+    font-family: var(--font-structure);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-3) var(--space-4);
+  }
+
+  .nav__list a {
+    font-family: var(--font-structure);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--ink);
+    text-underline-offset: 3px;
+    text-decoration: none;
+  }
+
+  .nav__list a:hover,
+  .nav__list a[aria-current='page'] {
+    text-decoration: underline;
+  }
+
+  .nav__action a {
+    border: 1px solid var(--ink);
+    padding: var(--space-1) var(--space-3);
+  }
+
+  .nav__action a:hover {
+    background: var(--rule-soft);
+    text-decoration: none;
+  }
+
+  @media (min-width: 720px) {
+    .nav {
+      flex-wrap: nowrap;
+    }
+
+    .nav nav {
+      flex: 1;
+    }
+
+    .nav__list {
+      justify-content: flex-end;
+    }
+  }
+</style>

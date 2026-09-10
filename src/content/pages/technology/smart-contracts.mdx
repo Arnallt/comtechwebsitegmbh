@@ -1,0 +1,30 @@
+---
+title: "Smart contracts — Technology — ComTech GmbH"
+description: "Audited smart contract libraries for permissioned and restricted-transfer tokens, deployed and operated by the integrating institution."
+h1: "Smart contracts"
+lead: "Audited contract libraries for permissioned and restricted-transfer tokens."
+intro: "ComTech GmbH maintains the contract libraries an institution deploys to represent its instruments on-chain. Permissioned transfer, forced transfer and supply control are solved in the library; the institution deploys and operates."
+inProduction:
+  - "{{TK: which contract libraries and token standards are generally available}}"
+roadmap:
+  - "{{TK: contract libraries on the roadmap}}"
+references:
+  - term: "Token standards"
+    detail: "Permissioned and restricted transfer. {{TK: confirm supported standards — ERC-3643, ERC-1400, restricted-transfer ERC-20}}"
+  - term: "Transfer controls"
+    detail: "Allow-list and restricted-transfer enforcement, plus forced transfer for recovery and court order. {{TK: exact control set and how forced transfer is authorised}}"
+  - term: "Audits"
+    detail: "{{TK: name of the audit firm, scope and report date for each library}}"
+  - term: "Networks"
+    detail: "{{TK: the DLT networks the libraries are deployed and tested on}}"
+scope:
+  performs: "ComTech GmbH writes, audits and maintains the contract libraries and the tooling to deploy and upgrade them."
+  instructs: "The integrating institution deploys the contracts, holds the admin keys and authorises every on-chain action."
+  excludes: "ComTech GmbH does not hold contract admin keys in production, sign transactions for the institution, or issue any token. {{TK: perimeter statement from counsel}}"
+cta:
+  label: "Developer documentation"
+  href: "/developers"
+---
+
+Contract source, ABIs, deployment guides and audit reports live in the developer
+documentation.

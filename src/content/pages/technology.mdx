@@ -1,0 +1,53 @@
+---
+title: "Technology — ComTech GmbH"
+description: "Enterprise tokenisation components that institutions integrate into their own stack. Your brand, your clients, ComTech GmbH's technology."
+h1: "Your Brand. Your Clients. Our Technology."
+lead: "Institutional Technology for Real-World Assets."
+intro: "ComTech GmbH supplies the tokenisation components — APIs, smart contracts and white-label front ends — that an institution integrates into its own stack. The institution operates the infrastructure and keeps the client relationship; ComTech GmbH supplies and maintains the technology."
+pillars: true
+inProduction:
+  - "{{TK: which technology components are generally available today}}"
+roadmap:
+  - "{{TK: technology components on the roadmap}}"
+scope:
+  performs: "ComTech GmbH supplies and maintains the tokenisation components — APIs, smart contract libraries and white-label interfaces — and the tooling to deploy and operate them."
+  instructs: "The integrating institution operates the deployment, holds the client relationship and gives every asset-level instruction. ComTech GmbH acts on none of them."
+  excludes: "ComTech GmbH does not issue, hold, custody, trade or redeem any asset or token, and does not run the institution's production environment. {{TK: perimeter statement from counsel}}"
+cta:
+  label: "Talk to the team"
+  href: "/company/contact"
+---
+
+import Stack from '../../components/diagrams/Stack.astro';
+
+## The integration surface
+
+<Stack
+  id="technology-api-stack"
+  ariaLabel="API stack: client systems, above ComTech APIs, above the tokenisation engine, above smart contracts, above blockchain or DLT, above custodian, banking, registry and other partners."
+  layers={[
+    [{ label: 'Client Systems', owner: 'third-party' }],
+    [{ label: 'ComTech APIs', owner: 'comtech' }],
+    [{ label: 'Tokenisation Engine', owner: 'comtech' }],
+    [{ label: 'Smart Contracts', owner: 'comtech' }],
+    [{ label: 'Blockchain / DLT', owner: 'third-party' }],
+    [
+      { label: 'Custodian', owner: 'third-party' },
+      { label: 'Banking', owner: 'third-party' },
+      { label: 'Registry', owner: 'third-party' },
+      { label: 'Other Partners', owner: 'third-party' },
+    ],
+  ]}
+/>
+
+The client's systems call ComTech GmbH's APIs; the APIs drive the tokenisation
+engine and the smart contract layer; settlement and custody run through the
+institution's own partners.
+
+## Components
+
+- **APIs** — REST and webhook interfaces for configuration, issuance instructions, transfers and reporting. [Read the API overview](/comtechwebsitegmbh/technology/apis)
+- **Smart contracts** — audited contract libraries for permissioned and restricted-transfer tokens. [Read the smart contract overview](/comtechwebsitegmbh/technology/smart-contracts)
+- **White-label** — front ends an institution runs under its own brand. [Read the white-label overview](/comtechwebsitegmbh/technology/white-label)
+
+Each component routes to the developer documentation for full reference.

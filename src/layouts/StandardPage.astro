@@ -1,0 +1,155 @@
+---
+// Shell for every page that is not a StageRail sequence page: home,
+// /technology(+children), /solutions(+children), /developers, /company/*.
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import PageLayout from './PageLayout.astro';
+import PillarComparison from '../components/PillarComparison.astro';
+import ScopeOfService from '../components/ScopeOfService.astro';
+
+interface Props {
+  entry: CollectionEntry<'pages'>;
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const ctaHref = data.cta ? base + data.cta.href : null;
+---
+
+<PageLayout title={data.title} description={data.description}>
+  <main class="page">
+    <h1 class="type-display">{data.h1}</h1>
+    {data.lead && <p class="type-lead">{data.lead}</p>}
+    {data.intro && <p class="type-body">{data.intro}</p>}
+
+    <div class="page__prose">
+      <Content />
+    </div>
+
+    {data.pillars && <PillarComparison />}
+
+    {
+      data.references && (
+        <section class="page__split">
+          <h2 class="type-h2">Reference</h2>
+          <dl class="page__refs">
+            {data.references.map((ref) => (
+              <>
+                <dt>{ref.term}</dt>
+                <dd>{ref.detail}</dd>
+              </>
+            ))}
+          </dl>
+        </section>
+      )
+    }
+
+    {
+      (data.inProduction || data.roadmap) && (
+        <>
+          <section class="page__split">
+            <h2 class="type-h2">In production</h2>
+            <ul class="page__list">
+              {(data.inProduction ?? []).map((item) => (
+                <li class="type-body">{item}</li>
+              ))}
+            </ul>
+          </section>
+          <section class="page__split">
+            <h2 class="type-h2">Roadmap</h2>
+            <ul class="page__list">
+              {(data.roadmap ?? []).map((item) => (
+                <li class="type-body">{item}</li>
+              ))}
+            </ul>
+          </section>
+        </>
+      )
+    }
+
+    {
+      data.scope && (
+        <ScopeOfService
+          performs={data.scope.performs}
+          instructs={data.scope.instructs}
+          excludes={data.scope.excludes}
+        />
+      )
+    }
+
+    {
+      ctaHref && (
+        <p class="page__cta">
+          <a href={ctaHref}>{data.cta!.label}</a>
+        </p>
+      )
+    }
+  </main>
+</PageLayout>
+
+<style>
+  .page {
+    max-width: 960px;
+    margin-inline: auto;
+    padding: var(--space-6) var(--space-4) 0;
+  }
+
+  .page > * {
+    max-width: 68ch;
+  }
+
+  .page__prose {
+    margin-block: var(--space-6);
+  }
+
+  .page__split {
+    margin-block: var(--space-6);
+  }
+
+  .page__list {
+    margin: 0;
+    padding-left: var(--space-4);
+  }
+
+  .page__list li {
+    margin-block: var(--space-2);
+  }
+
+  .page__refs {
+    margin: 0;
+  }
+
+  .page__refs dt {
+    font-family: var(--font-structure);
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: var(--space-4);
+  }
+
+  .page__refs dd {
+    margin: var(--space-1) 0 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  .page__cta {
+    margin-top: var(--space-7);
+  }
+
+  .page__cta a {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--ink);
+    text-decoration: none;
+    font-family: var(--font-structure);
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .page__cta a:hover {
+    background: var(--rule-soft);
+  }
+</style>

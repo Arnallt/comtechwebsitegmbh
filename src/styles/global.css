@@ -22,13 +22,6 @@ body {
   padding-inline: var(--space-4);
 }
 
-@media (min-width: 900px) {
-  .container {
-    padding-inline: var(--space-6) var(--space-4);
-    padding-left: calc(120px + var(--space-4));
-  }
-}
-
 img,
 svg {
   max-width: 100%;
@@ -43,4 +36,52 @@ a {
 :focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 2px;
+}
+
+/* Print — §12. Procurement circulates pages as PDFs; keep the document and
+   diagrams, drop the chrome. Diagrams stay legible in B&W by stroke weight. */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .nav,
+  .stage-rail,
+  .footer__grid,
+  .page__cta,
+  .capability__cta {
+    display: none;
+  }
+
+  .capability {
+    display: block;
+    max-width: none;
+  }
+
+  .page,
+  .capability__body {
+    max-width: none;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .scope {
+    border-color: #000;
+    break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  .stage,
+  figure {
+    break-inside: avoid;
+  }
 }
