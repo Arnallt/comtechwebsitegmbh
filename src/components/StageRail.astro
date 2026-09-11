@@ -63,7 +63,10 @@ const { nodes, ariaLabel } = Astro.props;
     display: none;
   }
 
-  @media (min-width: 900px) {
+  /* screen-scoped: an unscoped min-width query also matches Chromium's
+     (wide) print viewport, and this scoped selector's specificity would
+     beat global.css's plain-class print override. */
+  @media screen and (min-width: 900px) {
     .stage-rail {
       display: block;
       position: sticky;

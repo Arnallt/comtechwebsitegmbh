@@ -136,7 +136,9 @@ const ctaHref = base.replace(/\/$/, '') + data.cta.href;
     background: var(--rule-soft);
   }
 
-  @media (min-width: 900px) {
+  /* screen-scoped — see the note in StageRail.astro. Print reverts to
+     single-column so the rail's hidden column doesn't leave a gap. */
+  @media screen and (min-width: 900px) {
     .capability {
       display: grid;
       grid-template-columns: 120px minmax(0, 1fr);

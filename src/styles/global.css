@@ -46,22 +46,26 @@ a {
     color: #000;
   }
 
+  /* !important throughout: every one of these classes also carries a
+     component-scoped rule (Astro's per-component attribute selector),
+     which outranks a plain class here regardless of source order — print
+     must win unconditionally, not by winning a specificity fight. */
   .nav,
   .stage-rail,
   .footer__grid,
   .page__cta,
   .capability__cta {
-    display: none;
+    display: none !important;
   }
 
   .capability {
-    display: block;
-    max-width: none;
+    display: block !important;
+    max-width: none !important;
   }
 
   .page,
   .capability__body {
-    max-width: none;
+    max-width: none !important;
   }
 
   a {
