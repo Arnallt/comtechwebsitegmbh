@@ -13,7 +13,9 @@ export default defineConfig({
   base: '/comtechwebsitegmbh/',
   // Strict CSP (§12). Astro adds script-src/style-src with per-build hashes;
   // no inline script is unhashed. Delivered as a <meta http-equiv> since
-  // GitHub Pages can't set headers.
+  // GitHub Pages can't set headers — which also means frame-ancestors is
+  // not listed here: the spec forbids delivering it via <meta> at all, and
+  // every browser logs a console warning and ignores it if you try.
   security: {
     csp: {
       directives: [
@@ -22,7 +24,6 @@ export default defineConfig({
         "font-src 'self'",
         "base-uri 'self'",
         "form-action 'self'",
-        "frame-ancestors 'none'",
         "object-src 'none'",
       ],
     },

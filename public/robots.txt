@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /comtechwebsitegmbh/diagrams
+
+Sitemap: https://arnallt.github.io/comtechwebsitegmbh/sitemap-index.xml

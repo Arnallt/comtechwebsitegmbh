@@ -21,3 +21,90 @@ const strokeWidth = owner === 'comtech' ? 1.6 : owner === 'emphasis' ? 2.2 : 1;
     >{label}</text
   >
 </g>
+
+<script>
+  // Diagram draw — CLAUDE.md §7 moment 1. First view only, connectors draw
+  // in sequence, the brass (ComTech) segment last, under 600ms, eased out.
+  // Enhancement only: skipped under reduced motion, and every diagram is
+  // fully drawn by default so nothing depends on this running (§12 no-JS).
+  //
+  // Lives here rather than in Chain/Stack/etc. because Node.astro is the
+  // one file every arrangement renders — Astro dedupes identical inline
+  // scripts across repeated component instances, so this still ships once
+  // per page regardless of how many diagrams or nodes it has.
+  //
+  // Native Web Animations API, not GSAP: DrawSVGPlugin cost ~29KB gzipped
+  // on every diagram-bearing page, which alone blows the §12 "JS < 40KB"
+  // budget for a first-view flourish. The stroke-dashoffset technique
+  // below does the same job in a few hundred bytes.
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const w = window as typeof window & { __diagramDrawInit?: boolean };
+
+  if (!reduce && 'IntersectionObserver' in window && !!Element.prototype.animate && !w.__diagramDrawInit) {
+    w.__diagramDrawInit = true;
+
+    const isRendered = (el: Element) => (el as HTMLElement).offsetParent !== null;
+
+    const pathLength = (el: SVGGraphicsElement): number => {
+      try {
+        return (el as unknown as SVGGeometryElement).getTotalLength();
+      } catch {
+        return 0;
+      }
+    };
+
+    const drawFrame = (frame: Element) => {
+      const svg = [...frame.querySelectorAll('svg')].find(isRendered);
+      if (!svg) return;
+
+      const els = [...svg.querySelectorAll<SVGGraphicsElement>('.connector, .node rect, .node circle')];
+      if (els.length === 0) return;
+
+      // A connector inherits the ownership of the node it leads into, so
+      // the chain reads as "third-party, then ComTech" the way the nodes
+      // already do.
+      const isBrass = (el: Element) => el.closest('.node--comtech') != null;
+      const first: SVGGraphicsElement[] = [];
+      const last: SVGGraphicsElement[] = [];
+      els.forEach((el, i) => {
+        const brass = el.classList.contains('connector')
+          ? isBrass(els.slice(i + 1).find((n) => !n.classList.contains('connector')) ?? el)
+          : isBrass(el);
+        (brass ? last : first).push(el);
+      });
+
+      const budget = 500; // ms, leaves headroom under the 600ms cap
+      const perEl = Math.min(45, budget / els.length);
+      const duration = perEl * 2.5;
+
+      [...first, ...last].forEach((el, i) => {
+        const len = pathLength(el);
+        if (!len) return;
+        el.style.strokeDasharray = `${len}`;
+        el.animate([{ strokeDashoffset: len }, { strokeDashoffset: 0 }], {
+          duration,
+          delay: i * perEl,
+          easing: 'ease-out',
+          fill: 'forwards',
+        });
+      });
+    };
+
+    const seen = new WeakSet<Element>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && !seen.has(entry.target)) {
+            seen.add(entry.target);
+            drawFrame(entry.target);
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.3 },
+    );
+
+    document.querySelectorAll('.diagram-frame').forEach((frame) => observer.observe(frame));
+  }
+</script>
