@@ -1,6 +1,31 @@
 // Shared geometry for the diagram system — CLAUDE.md §5. One primitive
 // (a labelled node with an ownership state) laid out five ways.
 
+// The `owner` rule (CLAUDE.md §2.1/§4.1), applied by hand at every call site
+// — not a label→owner lookup table, because the same label can mean a
+// different thing in different diagrams (see the two "Registry" nodes
+// below). Whoever adds a node re-runs this test:
+//
+//   comtech     — the node names a technology-verb function (configure,
+//                 deploy, execute, record, integrate) that ComTech's own
+//                 platform/technology performs — even when an issuer
+//                 instructs it. Minting, the platform's own registry, and
+//                 processing a corporate action all qualify: the decision
+//                 is the issuer's, the execution is ComTech's.
+//   third-party — the node names a decision, a physical/legal act, or an
+//                 external party or category ComTech does not perform or
+//                 is not: asset onboarding, structuring, custody,
+//                 verification/audit, another company, a partner category,
+//                 the underlying DLT network, or a brand-hierarchy child
+//                 whose operator isn't uniformly ComTech (e.g. the three
+//                 pillars on /home — Technology is client-operated).
+//   emphasis    — a destination/end-state worth the heavier stroke without
+//                 asserting it's ComTech's technology layer.
+//
+// Cross-check before shipping a new usage: grep the repo for the same
+// label and confirm the owner matches, unless the context genuinely
+// differs (technology.mdx's bottom-row "Registry" is a third-party
+// registrar in the integration stack, not the platform's own registry).
 export type Owner = 'comtech' | 'third-party' | 'emphasis';
 
 export interface NodeSpec {
