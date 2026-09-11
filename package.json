@@ -13,7 +13,7 @@
     "astro": "astro",
     "check:tk": "node scripts/check-tk.mjs",
     "lint:prose": "vale src/content && node scripts/check-prose.mjs",
-    "test:a11y": "npm run build:preview && node scripts/run-a11y.mjs",
+    "test:a11y": "npm run build:preview && playwright test",
     "lhci": "npm run build:preview && lhci autorun"
   },
   "dependencies": {
