@@ -34,7 +34,9 @@ jobs:
         continue-on-error: true
       # WCAG 2.2 AA is a build requirement (§12), not a review note — this
       # one blocks the deploy. It currently passes on every route.
-      - run: node scripts/run-a11y.mjs
+      # (Playwright's own webServer starts/stops the static server, see
+      # playwright.config.ts — dist/ is already built by the step above.)
+      - run: npx playwright test
       # Non-blocking for now: CLS on this site sits at 0.03-0.06 (font-swap
       # reflow), not the literal 0 the budget states — see project notes.
       # Chrome-launcher's Windows cleanup bug (unrelated) doesn't apply on
