@@ -1,8 +1,9 @@
 {
   "ci": {
     "collect": {
-      "staticDistDir": "./dist",
-      "url": ["http://localhost/index.html"]
+      "startServerCommand": "node scripts/serve-dist.mjs",
+      "startServerReadyPattern": "serving dist at",
+      "url": ["http://localhost:4321/comtechwebsitegmbh/"]
     },
     "assert": {
       "assertions": {
