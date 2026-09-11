@@ -1,10 +1,19 @@
-/* Type scale — CLAUDE.md §4.2. Reading: Spectral. Structure: Archivo. */
-@import '@fontsource/spectral/300.css';
-@import '@fontsource/spectral/300-italic.css';
-@import '@fontsource/spectral/400.css';
-@import '@fontsource/spectral/400-italic.css';
-@import '@fontsource/spectral/600.css';
-@import '@fontsource/spectral/600-italic.css';
+/* Type scale — CLAUDE.md §4.2. Reading: Spectral. Structure: Archivo.
+   Latin + Latin Extended only (covers English and German, incl. umlauts/ß)
+   instead of Fontsource's all-subsets files — cuts render-blocking CSS
+   text roughly 70% per weight (cyrillic/vietnamese/greek unused here). */
+@import '@fontsource/spectral/latin-300.css';
+@import '@fontsource/spectral/latin-ext-300.css';
+@import '@fontsource/spectral/latin-300-italic.css';
+@import '@fontsource/spectral/latin-ext-300-italic.css';
+@import '@fontsource/spectral/latin-400.css';
+@import '@fontsource/spectral/latin-ext-400.css';
+@import '@fontsource/spectral/latin-400-italic.css';
+@import '@fontsource/spectral/latin-ext-400-italic.css';
+@import '@fontsource/spectral/latin-600.css';
+@import '@fontsource/spectral/latin-ext-600.css';
+@import '@fontsource/spectral/latin-600-italic.css';
+@import '@fontsource/spectral/latin-ext-600-italic.css';
 @import '@fontsource-variable/archivo';
 
 :root {
