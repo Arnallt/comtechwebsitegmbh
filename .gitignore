@@ -28,3 +28,7 @@ pnpm-debug.log*
 test-results/
 playwright-report/
 blob-report/
+
+# source documents read for facts, never site assets
+*.pdf
+*.docx
