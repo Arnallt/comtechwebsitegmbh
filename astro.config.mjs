@@ -36,7 +36,10 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      filter: (page) => !page.includes('/diagrams'),
+      // /company/terms and /privacy are noindex placeholders (counsel hasn't
+      // sent real text yet) — drop from the sitemap too until they have
+      // content; remove this exclusion then.
+      filter: (page) => !/\/diagrams|\/company\/(terms|privacy)/.test(page),
     }),
   ]
 });

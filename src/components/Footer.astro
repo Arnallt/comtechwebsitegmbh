@@ -24,6 +24,11 @@ const columns = [
     ],
   },
 ];
+
+const legalLinks = [
+  { label: 'Terms & Conditions', href: '/company/terms' },
+  { label: 'Privacy Policy', href: '/company/privacy' },
+];
 ---
 
 <footer class="footer">
@@ -47,9 +52,17 @@ const columns = [
   <p class="footer__entity">
     ComTech GmbH is a Swiss technology company. It supplies tokenisation
     infrastructure and does not issue, hold, custody, trade or redeem any asset
-    or token. Registered office: {'{{TK: registered office address of ComTech GmbH}}'}.
+    or token. Registered office: Bahnhofstrasse 27, 6300 Zug, Switzerland.
   </p>
-  <p class="footer__legal">© {year} ComTech GmbH</p>
+  <p class="footer__legal">
+    © {year} ComTech GmbH
+    {legalLinks.map((l) => (
+      <>
+        {' · '}
+        <a href={base + l.href}>{l.label}</a>
+      </>
+    ))}
+  </p>
 </footer>
 
 <style>

@@ -18,6 +18,8 @@ const routes = [
   './company/about/',
   './company/regulatory-approach/',
   './company/contact/',
+  './company/terms/',
+  './company/privacy/',
   './diagrams/',
 ];
 

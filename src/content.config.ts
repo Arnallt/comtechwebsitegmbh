@@ -11,6 +11,7 @@ const pages = defineCollection({
     h1: z.string(),
     lead: z.string().optional(),
     intro: z.string().optional(),
+    noindex: z.boolean().default(false),
     pillars: z.boolean().default(false),
     inProduction: z.array(z.string()).optional(),
     roadmap: z.array(z.string()).optional(),
